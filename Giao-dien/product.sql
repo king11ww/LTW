@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2025 at 12:17 PM
+-- Generation Time: May 01, 2025 at 07:11 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,6 +24,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `hangsua`
+--
+
+CREATE TABLE `hangsua` (
+  `id` int(11) NOT NULL,
+  `ten_hang_sua` varchar(255) NOT NULL,
+  `dia_chi` varchar(255) NOT NULL,
+  `dien_thoai` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `hangsua`
+--
+
+INSERT INTO `hangsua` (`id`, `ten_hang_sua`, `dia_chi`, `dien_thoai`, `email`) VALUES
+(1, 'Vinamilk', '123 Nguyễn Du - Quận 1 - TP.HCM', '0999999999', 'vinamilk@vnm.com'),
+(2, 'Nutifood', 'Khu công nghiệp Sóng Thần Bình Dương', '0888888888', 'nutifood@ntf.com');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `khachhang`
 --
 
@@ -35,17 +57,18 @@ CREATE TABLE `khachhang` (
   `dia_chi` varchar(255) NOT NULL,
   `so_dien_thoai` varchar(20) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `mat_khau` varchar(50) NOT NULL
+  `mat_khau` varchar(50) NOT NULL,
+  `loai_tai_khoan` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `khachhang`
 --
 
-INSERT INTO `khachhang` (`id`, `ten_dang_nhap`, `ho_ten`, `gioi_tinh`, `dia_chi`, `so_dien_thoai`, `email`, `mat_khau`) VALUES
-(3, 'demo', 'demo', 'Nữ', 'demo', 'demo', 'demo@gmail.com', 'demo'),
-(4, 'admin', 'admin', '', 'admin', '', 'admin', 'admin'),
-(5, 'test', 'test', 'Nữ', 'test', '0123456789', 'test@gmail.com', 'ahihi');
+INSERT INTO `khachhang` (`id`, `ten_dang_nhap`, `ho_ten`, `gioi_tinh`, `dia_chi`, `so_dien_thoai`, `email`, `mat_khau`, `loai_tai_khoan`) VALUES
+(3, 'demo', 'demo', 'Nữ', 'demo', 'demo', 'demo@gmail.com', 'demo', 'USER'),
+(4, 'admin', 'admin', '', 'admin', '', 'admin', 'admin', 'ADMIN'),
+(5, 'test', 'test', 'Nữ', 'test', '0123456789', 'test@gmail.com', 'ahihi', 'USER');
 
 -- --------------------------------------------------------
 
@@ -95,6 +118,12 @@ INSERT INTO `sanpham` (`id`, `ten`, `nhanhang`, `giaban`, `image`) VALUES
 --
 
 --
+-- Indexes for table `hangsua`
+--
+ALTER TABLE `hangsua`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `khachhang`
 --
 ALTER TABLE `khachhang`
@@ -110,6 +139,12 @@ ALTER TABLE `sanpham`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `hangsua`
+--
+ALTER TABLE `hangsua`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `khachhang`
