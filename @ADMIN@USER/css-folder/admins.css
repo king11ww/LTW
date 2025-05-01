@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: none;
+}
+body{
+    position: relative;
+}
+.header{
+    background: #fff;
+    position: sticky;
+    top: 0;
+    height: 80px;
+    width: 100%;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+.header div{
+    display: inline-block;
+    z-index: 99;
+}
+a{
+    text-decoration: none;
+    color: #162735;
+}
+.header .logo{
+    width: 25%;
+    padding: 25px 0px;
+    font-size: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+.space{
+    position: absolute;
+    color: #df0f2b;
+    top: 75%;
+    left: 0;
+    width: 25%;
+}
+.header .menu{
+    flex: 1;
+    padding: 25px 0px;
+    font-size: 18px;
+    text-align: center;
+}
+.header .menu .chose{
+    padding: 0px 10px;
+    cursor: pointer;
+    transition: 0.1s;
+}
+.header .menu .chose a:hover{
+    text-decoration: underline;
+    color: #105d87;
+}

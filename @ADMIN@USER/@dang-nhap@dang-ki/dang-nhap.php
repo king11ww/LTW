@@ -16,7 +16,7 @@
             if($row['ten_dang_nhap'] == 'admin')
             {
                 
-                header('Location: ../admin-folder/trang-admin.php');
+                header('Location: ../admin-folder/thong-tin-khach-hang.php');
             }
             else
             {
@@ -48,16 +48,19 @@
     <title>Đăng nhập</title>
 </head>
 <body>
-    <div>
-        <form method="post">
-            <h2>Đăng nhập</h2>
-            <label for="ten-dang-nhap">Tên đăng nhập</label>
-            <input type="text" name="ten-dang-nhap" id="ten-dang-nhap" required><br>
-            <label for="mat-khau">Mật khẩu</label>
-            <input type="password" name="mat-khau" id="mat-khau" required><br>
-            <input type="submit" value="Đăng nhập">
-        </form>
-        <div>Chưa có tài khoản -> <a href="dang-ki.php">Đăng kí</a></div>
+    <div class="container">
+        <div class="box">
+            <form method="post">
+                <h2>Đăng nhập</h2>
+                <label for="ten-dang-nhap">Tên đăng nhập</label>
+                <input type="text" name="ten-dang-nhap" id="ten-dang-nhap" required><br>
+                <label for="mat-khau">Mật khẩu</label>
+                <input type="password" name="mat-khau" id="mat-khau" required><br>
+                <button type="submit">Đăng nhập</button>
+            </form>
+            <div>Chưa có tài khoản -> <a href="dang-ki.php">Đăng kí</a></div>
+        </div>
     </div>
+    
 </body>
 </html>

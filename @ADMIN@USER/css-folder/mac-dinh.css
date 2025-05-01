@@ -8,3 +8,45 @@
 ul{
     list-style: none;
 }
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box{
+    width: 40%;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+.box h2{
+    font-size: 30px;
+    text-align: center;
+}
+.box form input{
+    width: 100%;
+    display: block;
+    font-size: 15px;
+    padding: 10px 10px ;
+    border-radius: 15px;
+    border: none;
+    margin-bottom: 10px;
+}
+.box form button{
+    margin: 15px auto;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #105d87;
+    padding: 10px;
+    color: #fff;
+    background: #105d87;
+    transition: 0.5s;
+}
+.box form button:hover{
+    background: #fff;
+    color: #105d87;
+    border: 1px solid #105d87;
+}
