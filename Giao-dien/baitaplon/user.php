@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +13,7 @@
   <div class="container">
   <div class="header">
     <div class="logo">
-        <a href="batdau.php">
+        <a href="php/batdau.php">
         <i class="fa-solid fa-glass-water"></i>
         <span>Milk</span>   
         </a>
@@ -18,7 +21,7 @@
     
     <div class="menu">
         <div class="chose">
-            <a href="batdau.php">Home</a>
+            <a href="php/batdau.php">Home</a>
         </div>
         <div class="chose">
             <a href="batdau.php">Sản Phẩm</a>
@@ -31,7 +34,7 @@
         </div>
     </div>
     <div class="user">
-        <a href="#">
+        <a href="user.php">
             <i class="fa-solid fa-user"></i>
         </a>
     </div>
@@ -46,7 +49,7 @@
     <div class="profile-header">
       <img src="https://e7.pngegg.com/pngimages/358/473/png-clipart-computer-icons-user-profile-person-child-heroes.png" alt="Avatar" class="avatar">
       <div class="user-info">
-        <h2>John Doe</h2>
+        <h2></h2>
         <p>john.doe@example.com</p>
       </div>
       <button class="settings-btn">⚙</button>
@@ -54,20 +57,20 @@
 
     <form class="profile-form">
       <label>Full Name</label>
-      <input type="text" value="John Doe">
+      <input type="text" value="<?php echo $_SESSION['ho_ten']; ?>">
 
       <label>Email</label>
-      <input type="email" value="john.doe@example.com" >
+      <input type="email" value="<?php echo $_SESSION['email']; ?>" >
       <small>Email cannot be changed</small>
 
       <label>Phone</label>
-      <input type="text" value="+84 123 456 789">
+      <input type="text" value="<?php echo $_SESSION['so_dien_thoai']; ?>">
 
       <label>Address</label>
-      <input type="text" value="123 Nguyen Hue, District 1, Ho Chi Minh City">
+      <input type="text" value="<?php echo $_SESSION['dia_chi']; ?>">
 
       <div class="button-group">
-        <button type="submit" class="save">Save Changes</button>
+        <button type="submit" class="doi_mat_khau">Đổi mật khẩu</button>
         <button type="button" class="cancel">Cancel</button>
       </div>
     </form>

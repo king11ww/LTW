@@ -57,8 +57,8 @@
             if($matKhau == $nhapLaiMatKhau)
             {
                 require_once("../../ket-noi-co-so-du-lieu.php");
-                $sql = "INSERT INTO khachhang (ten_dang_nhap, ho_ten, gioi_tinh, dia_chi, so_dien_thoai, email, mat_khau) 
-                        VALUES ('$tenDangNhap', '$hoVaTen', '$gioiTinh', '$diaChi', '$soDienThoai', '$email', '$matKhau')";
+                $sql = "INSERT INTO khachhang (ten_dang_nhap, ho_ten, gioi_tinh, dia_chi, so_dien_thoai, email, mat_khau, loai_tai_khoan) 
+                        VALUES ('$tenDangNhap', '$hoVaTen', '$gioiTinh', '$diaChi', '$soDienThoai', '$email', '$matKhau', 'USER')";
                 $get_user = "SELECT * FROM khachhang WHERE ten_dang_nhap = '$tenDangNhap'";
                 if ($conn->query($get_user)->num_rows > 0) {
                     echo "<script>alert('Tên đăng nhập đã tồn tại!');</script>";
@@ -67,7 +67,7 @@
                 }     
 
                 if ($conn->query($sql) === TRUE) {
-                    echo "<script>alert('Đăng kí thành công!');</script>";
+                    echo "<script>alert('Đăng kí thành công! Vui lòng đăng nhập lại heheh');</script>";
                     header("Location: dang-nhap.php");
                     exit();
                 } else {

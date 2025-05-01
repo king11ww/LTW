@@ -1,3 +1,12 @@
+<?php
+    // phần này dùng để logout, hủy hết session và quay về trang batdau á nha
+    if(isset($_GET['action']) && $_GET['action'] == 'logout'){
+        session_start();
+        session_destroy();
+        header("Location: batdau.php");
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +21,7 @@
     <?php
 		require_once("../../../ket-noi-co-so-du-lieu.php"); // ..(1) out ra php ..(2) out ra baitaplon ..(3) out ra Giao-dien
 		$sql = "select * from sanpham";
-		$kq = mysqli_query($conn, $sql); //Go
+		$kq = mysqli_query($conn, $sql); // Go
 	?>
     <div class="container">
         <div class="header">
@@ -37,16 +46,30 @@
                 </div>
             </div>
             <div class="user">
-                <a href="#">
-                    <i class="fa-solid fa-user"></i>
-                </a>
+                <?php // phần này là để kiểm tra nếu đăng nhập thì hiện hộp người dùng, nếu chưa thì hiện hộp đăng nhập nha
+                    session_start();
+                    if(isset($_SESSION['ten_dang_nhap'])): // isset có nghĩa là nếu đã đăng nhập và ngược lại
+                ?>
+                    Xin chào <?php echo $_SESSION['ho_ten'] ?> |
+                    <a href="../user.php">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                <?php else: ?>                    
+                    <a href="../../../@ADMIN@USER/@dang-nhap@dang-ki/dang-nhap.php">Đăng nhập</a> |
+                    <a href="../../../@ADMIN@USER/@dang-nhap@dang-ki/dang-ki.php">Đăng kí</a>
+                <?php endif; ?>
             </div>
+            <?php 
+            if(isset($_SESSION['ten_dang_nhap'])): 
+            ?>
             <div class="shopcart">
                 <a href="#">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <div class="shopcart_value">1</div>
                 </a>
             </div>
+            <a href="batdau.php?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="logout">Đăng xuất</a>
+            <?php endif; ?>
         </div>
         <div class="maincontent">
             <div class="home">

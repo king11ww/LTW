@@ -13,7 +13,7 @@
         if (mysqli_num_rows($result) > 0) 
         {
             $row = mysqli_fetch_assoc($result);
-            if($row['ten_dang_nhap'] == 'admin')
+            if($row['loai_tai_khoan'] == 'ADMIN')
             {
                 
                 header('Location: ../admin-folder/trang-admin.php');
@@ -21,15 +21,15 @@
             else
             {
                 $_SESSION['id'] = $row['id'];
-                $_SESSION['ten_dang_nhap'] = $tenDangNhap;
-                $_SESSION['ho_ten'] = $row['ho_ten'];
+                $_SESSION['ten_dang_nhap'] = $tenDangNhap;  
+                $_SESSION['ho_ten'] = $row['ho_ten'];    
                 $_SESSION['gioi_tinh'] = $row['gioi_tinh'];
                 $_SESSION['dia_chi'] = $row['dia_chi'];
                 $_SESSION['so_dien_thoai'] = $row['so_dien_thoai'];
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['mat_khau'] = $row['mat_khau'];
+                $_SESSION['loai_tai_khoan'] = $row['loai_tai_khoan'];
                 header('Location: ../../Giao-dien/baitaplon/php/batdau.php');
-                
             }
             exit();
         } 

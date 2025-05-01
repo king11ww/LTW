@@ -14,20 +14,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hinh_anh = $_FILES['hinh_anh']['name'];
 
     // Xử lý upload hình ảnh
-    $target_dir = "../uploads/";
+    $target_dir = "../../Giao-dien/baitaplon/img/"; // Thư mục lưu ảnh
     $target_file = $target_dir . basename($_FILES["hinh_anh"]["name"]);
-    move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file);
 
-    // Thêm dữ liệu vào bảng
-    $sql = "INSERT INTO sua (ma_sua, ten_sua, hang_sua, loai_sua, trong_luong, don_gia, mo_ta, hinh_anh) 
-            VALUES ('$ma_sua', '$ten_sua', '$hang_sua', '$loai_sua', '$trong_luong', '$don_gia', '$mo_ta', '$hinh_anh')";
+    // Kiểm tra và di chuyển file ảnh
+    if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
+        // Thêm dữ liệu vào bảng
+        $sql = "INSERT INTO sua (ma_sua, ten_sua, hang_sua, loai_sua, trong_luong, don_gia, mo_ta, hinh_anh) 
+                VALUES ('$ma_sua', '$ten_sua', '$hang_sua', '$loai_sua', '$trong_luong', '$don_gia', '$mo_ta', '$hinh_anh')";
 
-    if ($conn->query($sql) === TRUE) {
-        // Chuyển hướng về trang admin
-        header("Location: trang-admin.php");
-        exit();
+        if ($conn->query($sql) === TRUE) {
+            // Chuyển hướng về trang admin
+            header("Location: trang-admin.php");
+            exit();
+        } else {
+            echo "Lỗi: " . $sql . "<br>" . $conn->error;
+        }
     } else {
-        echo "Lỗi: " . $sql . "<br>" . $conn->error;
+        echo "Lỗi khi tải lên hình ảnh.";
     }
 
     $conn->close();
