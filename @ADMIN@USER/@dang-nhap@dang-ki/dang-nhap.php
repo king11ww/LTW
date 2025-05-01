@@ -16,7 +16,7 @@
             if($row['loai_tai_khoan'] == 'ADMIN')
             {
                 
-                header('Location: ../admin-folder/thong-tin-khach-hang.php');
+                header('Location: ../admin-folder/trang-admin.php');
             }
             else
             {

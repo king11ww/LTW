@@ -2,7 +2,14 @@
     require_once('../../ket-noi-co-so-du-lieu.php');
     $sql = "SELECT * FROM khachhang";
     $result = mysqli_query($conn, $sql);
+    if(isset($_GET['action']) && $_GET['action'] == 'logout') {
+        session_start();
+        session_destroy();
+        header("Location: ../../Giao-dien/baitaplon/php/batdau.php");
+        exit();
+    }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +41,7 @@
                 <a href="thong-tin-sua.php">Thông tin đơn hàng</a>
             </div>
             <div class="chose">
-                <a href="dang-xuat.php">Đăng xuất</a>
+            <a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="logout">Đăng xuất</a>
             </div>
         </div>
     </div>
