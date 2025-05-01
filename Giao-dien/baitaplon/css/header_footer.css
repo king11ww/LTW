@@ -1,0 +1,135 @@
+.header{
+    background: #fff;
+    position: sticky;
+    top: 0;
+    height: 80px;
+    width: 100%;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.header div{
+    display: inline-block;
+}
+a{
+    text-decoration: none;
+}
+.header .logo{
+    width: 25%;
+    padding: 25px 0px;
+    font-size: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+.header .logo a{
+    color: #162735;
+}
+.header .menu{
+    flex: 1;
+    padding: 25px 0px;
+    font-size: 25px;
+    text-align: center;
+}
+.header .menu .chose{
+    margin: 0px 10px;
+    cursor: pointer;
+    transition: 0.1s;
+}
+.header .menu .chose a{
+    color: #162735;
+}
+.header .shopcart{
+    padding: 10px 10px;
+    font-size: 20px;
+    text-align: center;
+}
+.header .shopcart a{
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    box-shadow: 5px #000;
+    border-radius: 5px;
+    transition: 0.3s;
+    color: #162735;
+}
+.user{
+    width: 25%;
+    padding: 10px 0px;
+    font-size: 20px;
+    text-align: right;
+}
+.user a{
+    background: #fff;
+    display: inline-block;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    box-shadow: 5px #000;
+    border-radius: 5px;
+    transition: 0.3s;
+    color: #162735;
+}
+.header .shopcart a i{
+    transition: 0.3s;
+}
+.header .shopcart a .shopcart_value{
+    position: absolute;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    left: 95%;
+    font-size: 15px;
+    color: #fff;
+    background-color: red;
+    border-radius: 50%;
+}
+.footer{
+    width: 100%;
+    background: #162735;
+}
+.footer .footer_content{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    padding: 50px 0 0 0;
+    color: #dbdbdb;
+}
+.footer .footer_content .footer_menu{
+    width: 100%;
+    display: flex;
+    margin-bottom: 40px;
+}
+.footer_menu .footer_menu_st{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.footer_menu .footer_menu_st span{
+    margin: 10px 0;
+    font-size: 17px;
+}
+.footer_menu .footer_menu_st span a{
+    text-decoration: none;
+    color: #dbdbdb;
+}
+.footer_end h6{
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+.container .header .menu .chose a:hover{
+    color: #105d87;
+}
+/*hieu ung*/
+.shopcart a:hover{
+    background: #162735;
+    color: #fff;
+}
+.user a:hover{
+    background: #162735;
+    color: #fff;
+}
+.footer_menu .footer_menu_st span a:hover{
+    color: #fff;
+}
