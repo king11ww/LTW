@@ -48,7 +48,13 @@
             <div class="shopcart">
                 <a href="shop.php">
                     <i class="fa-solid fa-cart-shopping"></i>
-                    <div class="shopcart_value">1</div>
+                    <?php
+                        $sqll = "select so_luong = count() from dohang where ten_dang_nhap = '{$_SESSION['ten_dang_nhap']}'";
+                        $kqgh = mysqli_query($conn, $sqll);
+                        if($kqgh > 0){
+                    ?>
+                    <div class="shopcart_value"><?php echo $kqgh ?></div>
+                    <?php } ?>
                 </a>
             </div>
             <?php else: ?>
