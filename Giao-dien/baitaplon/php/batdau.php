@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +39,7 @@
                     <a href="batdau.php">Liên hệ</a>
                 </div>
             </div>
+            <?php if(isset($_SESSION['ten_dang_nhap'])): ?>
             <div class="user">
                 <a href="user.php">
                     <i class="fa-solid fa-user"></i>
@@ -47,6 +51,13 @@
                     <div class="shopcart_value">1</div>
                 </a>
             </div>
+            <?php else: ?>
+            <div class="user">
+                <a href="../../../@ADMIN@USER/@dang-nhap@dang-ki/dang-nhap.php">Đăng nhập</a> |
+                <a href="../../../@ADMIN@USER/@dang-nhap@dang-ki/dang-ki.php" >Đăng ký</a>
+            </div>
+            <?php endif; ?>
+
         </div>
         <div class="maincontent">
             <div class="home">
