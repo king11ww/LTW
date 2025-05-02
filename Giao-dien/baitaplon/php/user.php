@@ -1,19 +1,16 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>User Profile Form</title>
-  <link rel="stylesheet" href="user.css">
+  <link rel="stylesheet" href="../css/user.css">
   <script src="https://kit.fontawesome.com/bb6c8d9b87.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="container">
   <div class="header">
     <div class="logo">
-        <a href="php/batdau.php">
+        <a href="batdau.php">
         <i class="fa-solid fa-glass-water"></i>
         <span>Milk</span>   
         </a>
@@ -21,7 +18,7 @@ session_start();
     
     <div class="menu">
         <div class="chose">
-            <a href="php/batdau.php">Home</a>
+            <a href="batdau.php">Home</a>
         </div>
         <div class="chose">
             <a href="batdau.php">Sản Phẩm</a>
@@ -34,7 +31,7 @@ session_start();
         </div>
     </div>
     <div class="user">
-        <a href="user.php">
+        <a href="#">
             <i class="fa-solid fa-user"></i>
         </a>
     </div>
@@ -49,7 +46,7 @@ session_start();
     <div class="profile-header">
       <img src="https://e7.pngegg.com/pngimages/358/473/png-clipart-computer-icons-user-profile-person-child-heroes.png" alt="Avatar" class="avatar">
       <div class="user-info">
-        <h2></h2>
+        <h2>John Doe</h2>
         <p>john.doe@example.com</p>
       </div>
       <button class="settings-btn">⚙</button>
@@ -57,20 +54,20 @@ session_start();
 
     <form class="profile-form">
       <label>Full Name</label>
-      <input type="text" value="<?php echo $_SESSION['ho_ten']; ?>">
+      <input type="text" value="John Doe">
 
       <label>Email</label>
-      <input type="email" value="<?php echo $_SESSION['email']; ?>" >
+      <input type="email" value="john.doe@example.com" >
       <small>Email cannot be changed</small>
 
       <label>Phone</label>
-      <input type="text" value="<?php echo $_SESSION['so_dien_thoai']; ?>">
+      <input type="text" value="+84 123 456 789">
 
       <label>Address</label>
-      <input type="text" value="<?php echo $_SESSION['dia_chi']; ?>">
+      <input type="text" value="123 Nguyen Hue, District 1, Ho Chi Minh City">
 
       <div class="button-group">
-        <button type="submit" class="doi_mat_khau">Đổi mật khẩu</button>
+        <button type="submit" class="save">Save Changes</button>
         <button type="button" class="cancel">Cancel</button>
       </div>
     </form>

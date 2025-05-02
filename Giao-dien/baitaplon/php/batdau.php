@@ -1,12 +1,3 @@
-<?php
-    // phần này dùng để logout, hủy hết session và quay về trang batdau á nha
-    if(isset($_GET['action']) && $_GET['action'] == 'logout'){
-        session_start();
-        session_destroy();
-        header("Location: batdau.php");
-    }
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,8 +11,8 @@
 <body>
     <?php
 		require_once("../../../ket-noi-co-so-du-lieu.php"); // ..(1) out ra php ..(2) out ra baitaplon ..(3) out ra Giao-dien
-		$sql = "select * from sanpham";
-		$kq = mysqli_query($conn, $sql); // Go
+		$sql = "select * from sanpham where nhanhang = 'Vinamilk'";
+		$kq = mysqli_query($conn, $sql); //Go
 	?>
     <div class="container">
         <div class="header">
@@ -36,7 +27,7 @@
                     <a href="batdau.php">Home</a>
                 </div>
                 <div class="chose">
-                    <a href="batdau.php">Sản Phẩm</a>
+                    <a href="sanpham.php">Sản Phẩm</a>
                 </div>
                 <div class="chose">
                     <a href="batdau.php">Thông tin</a>
@@ -46,30 +37,16 @@
                 </div>
             </div>
             <div class="user">
-                <?php // phần này là để kiểm tra nếu đăng nhập thì hiện hộp người dùng, nếu chưa thì hiện hộp đăng nhập nha
-                    session_start();
-                    if(isset($_SESSION['ten_dang_nhap'])): // isset có nghĩa là nếu đã đăng nhập và ngược lại
-                ?>
-                    Xin chào <?php echo $_SESSION['ho_ten'] ?> |
-                    <a href="../user.php">
-                        <i class="fa-solid fa-user"></i>
-                    </a>
-                <?php else: ?>                    
-                    <a href="../../../@ADMIN@USER/@dang-nhap@dang-ki/dang-nhap.php">Đăng nhập</a> |
-                    <a href="../../../@ADMIN@USER/@dang-nhap@dang-ki/dang-ki.php">Đăng kí</a>
-                <?php endif; ?>
+                <a href="user.php">
+                    <i class="fa-solid fa-user"></i>
+                </a>
             </div>
-            <?php 
-            if(isset($_SESSION['ten_dang_nhap'])): 
-            ?>
             <div class="shopcart">
-                <a href="#">
+                <a href="shop.php">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <div class="shopcart_value">1</div>
                 </a>
             </div>
-            <a href="batdau.php?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="logout">Đăng xuất</a>
-            <?php endif; ?>
         </div>
         <div class="maincontent">
             <div class="home">
@@ -92,7 +69,7 @@
                     </p>
                 </div>
                 <div class="products_maincontent">
-                    <input type="search" placeholder="Tìm kiếm các sản phảm ưng ý...">
+                    <input type="search" placeholder="Tìm kiếm sản phẩm...">
                     <div class="products_product">
                         <?php
                             while($row = mysqli_fetch_assoc($kq)){
@@ -102,8 +79,16 @@
                             <div class="product_info">
                                <p>
                                     <span><?php echo $row["ten"] ?></span>
-                                    <span><?php echo $row["giaban"] ?></span>
-                                    <i>Mô tả</i>
+                                    <span><?php echo $row["giaban"] ?>vnđ</span>
+                                    <div class="mota">
+                                        <i>Mô tả
+                                            <div class="cuasomota">
+                                                <p>
+                                                    <span>ten nha san xuat: <?php echo $row["nhanhang"] ?></span>
+                                                </p>
+                                            </div>
+                                        </i>
+                                    </div>
                                 </p>
                             </div>
                             <div class="button_add_card">
@@ -197,8 +182,8 @@
                     </div>
                     <div class="footer_menu_st">
                         <h2>Qick Links</h2>
-                        <span><a href="#">Home</a></span>
-                        <span><a href="#">Sản phẩm</a></span>
+                        <span><a href="batdau.php">Home</a></span>
+                        <span><a href="sanpham.php">Sản phẩm</a></span>
                         <span><a href="#">Thông tin</a></span>
                         <span><a href="#">Liên hệ</a></span>
                     </div>

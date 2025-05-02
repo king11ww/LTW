@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/batdau.css">
+    <link rel="stylesheet" href="../css/header_footer.css">
+    <script src="https://kit.fontawesome.com/bb6c8d9b87.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <?php
+		require_once("../../../ket-noi-co-so-du-lieu.php"); // ..(1) out ra php ..(2) out ra baitaplon ..(3) out ra Giao-dien
+		$sql = "select * from sanpham";
+		$kq = mysqli_query($conn, $sql); //Go
+	?>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <a href="batdau.php">
+                <i class="fa-solid fa-glass-water"></i>
+                <span>Milk</span>   
+                </a>
+            </div>
+            <div class="menu">
+                <div class="chose">
+                    <a href="batdau.php">Home</a>
+                </div>
+                <div class="chose">
+                    <a href="batdau.php">Sản Phẩm</a>
+                </div>
+                <div class="chose">
+                    <a href="batdau.php">Thông tin</a>
+                </div>
+                <div class="chose">
+                    <a href="batdau.php">Liên hệ</a>
+                </div>
+            </div>
+            <div class="user">
+                <a href="#">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </div>
+            <div class="shopcart">
+                <a href="#">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <div class="shopcart_value">1</div>
+                </a>
+            </div>
+        </div>
+        <div class="maincontent">
+            <div class="products">
+                <div class="products_head">
+                    <p>
+                        <span>Sản phẩm của chúng tôi</span>
+                        <i>Khám phá các sản phẩm từ sữa tươi của chúng tôi, nguồn gốc và thông tin rõ ràng.</i>
+                    </p>
+                </div>
+                <div class="products_maincontent">
+                    <input type="search" placeholder="Tìm kiếm sản phẩm...">
+                    <div class="products_product">
+                        <?php
+                            while($row = mysqli_fetch_assoc($kq)){
+                        ?>
+                        <div class="product">
+                            <div class="product_img"><img src="../img/<?php echo $row['image'] ?>" alt="demo"></div>
+                            <div class="product_info">
+                               <p>
+                                    <span><?php echo $row["ten"] ?></span>
+                                    <span><?php echo $row["giaban"] ?>vnđ</span>
+                                    <div class="mota">
+                                        <i>Mô tả
+                                            <div class="cuasomota">
+                                                <p>
+                                                    <span>ten nha san xuat: <?php echo $row["nhanhang"] ?></span>
+                                                </p>
+                                            </div>
+                                        </i>
+                                    </div>
+                                </p>
+                            </div>
+                            <div class="button_add_card">
+                                <button><i class="fa-solid fa-cart-shopping"></i><span> Thêm vào giỏ hàng</span></button>
+                            </div>
+                        </div>
+                        <?php
+                            }
+                            mysqli_close($conn);
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer_content">
+                <div class="footer_menu">
+                    <div class="footer_menu_st">
+                        <h1><i class="fa-solid fa-glass-water"></i> MILK</h1>
+                        <span>Các sản phẩm từ sữa cao cấp được giao tươi đến tận nhà bạn mỗi ngày.</span>
+                    </div>
+                    <div class="footer_menu_st">
+                        <h2>Qick Links</h2>
+                        <span><a href="#">Home</a></span>
+                        <span><a href="#">Sản phẩm</a></span>
+                        <span><a href="#">Thông tin</a></span>
+                        <span><a href="#">Liên hệ</a></span>
+                    </div>
+                    <div class="footer_menu_st">
+                        <h2>Các nhãn hàng</h2>
+                        <span><a href="#">Vinamilk</a></span>
+                        <span><a href="#">TH true MILK</a></span>
+                        <span><a href="#">Nutifood</a></span>
+                        <span><a href="#">Dutch Lady</a></span>
+                    </div>
+                    <div class="footer_menu_st">
+                        <h2>Hãy là một thành viên của chúng tôi!</h2>
+                        <span><a href="#">tham gia Tuyển dụng ngay</a></span>
+                    </div>
+                </div>
+                <div class="footer_end">
+                    <hr>
+                    <h6>© 2025 Milk. All rights reserved.</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
