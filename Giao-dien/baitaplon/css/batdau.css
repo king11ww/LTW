@@ -313,13 +313,50 @@ body{
 .contract .askandinfo .askandifo_info span{
     padding: 10px 5px;
 }
+.mota{
+    position: relative;
+    padding: 10px;
+}
+.mota i{
+    margin: 15px auto;
+    width: 50%;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    color: #105d87;
+    cursor: pointer;
+}
+.cuasomota{
+    position: absolute;
+    width: 100%;
+    top: -100%;
+    left: 0;
+    display: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: #fff;
+    background: #105d87;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+}
+.cuasomota span{
+    display: block;
+    width: 100%;
+}
 /*hieu ung*/
+.mota i:hover .cuasomota{
+    display: block;
+}
 .product:hover{
-    transform: scale(1.1);
+    transform: scale(1.02);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 .button_add_card:hover{
     transform: scale(0.97);
 }
 .contract .askandinfo .askandinfo_form button:hover{
     transform: scale(0.97);
+}
+.products .products_maincontent .products_product .product button:hover{
+    text-decoration: underline;
 }
