@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2025 at 07:11 PM
+-- Generation Time: May 02, 2025 at 08:56 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,21 @@ SET time_zone = "+00:00";
 --
 -- Database: `product`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dohang`
+--
+
+CREATE TABLE `dohang` (
+  `id` int(11) NOT NULL,
+  `ten_dang_nhap` varchar(255) NOT NULL,
+  `ho_ten` varchar(255) NOT NULL,
+  `soluong` int(11) NOT NULL DEFAULT 1,
+  `ten_san_pham` varchar(255) NOT NULL,
+  `gia` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -118,15 +133,9 @@ INSERT INTO `sanpham` (`id`, `ten`, `nhanhang`, `giaban`, `image`) VALUES
 --
 
 --
--- Indexes for table `hangsua`
+-- Indexes for table `dohang`
 --
-ALTER TABLE `hangsua`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `khachhang`
---
-ALTER TABLE `khachhang`
+ALTER TABLE `dohang`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -141,16 +150,10 @@ ALTER TABLE `sanpham`
 --
 
 --
--- AUTO_INCREMENT for table `hangsua`
+-- AUTO_INCREMENT for table `dohang`
 --
-ALTER TABLE `hangsua`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `khachhang`
---
-ALTER TABLE `khachhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `dohang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sanpham`
