@@ -59,7 +59,8 @@
                     <i class="fa-solid fa-cart-shopping"></i>
                     <?php
                         require_once("../../../ket-noi-co-so-du-lieu.php");
-                        $sql_so_luong_don_hang = "select * from dohang where ten_dang_nhap = '$_SESSION[ten_dang_nhap]'";  
+                        $ten_dang_nhap = $_SESSION['ten_dang_nhap'];
+                        $sql_so_luong_don_hang = "select * from dohang where ten_dang_nhap = '$ten_dang_nhap'";  
                         $so_luong_don_hang =  mysqli_num_rows(mysqli_query($conn, $sql_so_luong_don_hang));
                     ?>
                     <?php
@@ -90,21 +91,29 @@
                     <div class="product-summary">
                         <div class="inshop">
                             <?php
-                                require_once("../../ket-noi-co-so-du-lieu.php");
-                                $sql = "select * from dohang where ten_dang_nhap = '$_SESSION[ten_dang_nhap]'";  
+                                require_once("../../../ket-noi-co-so-du-lieu.php");
+                                $sql = "select * from dohang as dh inner join sanpham as sp on sp.ten = dh.ten_san_pham where ten_dang_nhap = '$_SESSION[ten_dang_nhap]'";  
                                 $result = mysqli_query($conn, $sql);
                                 $allmoney = 0;
-                                while($row = mysqli_fetch_array($result)){
+                                if(mysqli_num_rows($result) <= 0)
+                                {
+                                    echo "Không có đơn hàng";
+                                }
+                                else
+                                {
+
+                                
+                                while($row = mysqli_fetch_assoc($result)){
                             ?>
                             <div class="info">
                                 <b class="product-info">Thông tin sản phẩm</b>
                                 <div class="setting-photo">
                                     <div class="image-container">
-                                        <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/nguyen-chat-1L-2024-1.jpg" alt="Sản phẩm">
+                                        <img src="../img/<?php echo $row['image']?>" alt="Sản phẩm">
                                     </div>
                                     <div class="infophoto">
                                         <b><?php echo $row['ten_san_pham'] ?></b>
-                                        <p>ten nha san xuat: <?php echo $row['ten_nha_san_xuat'] ?></p>
+                                        <p>Tên nhãn hàngt: <?php echo $row['nhanhang'] ?></p>
                                     </div>
                                     <div class="money">
                                         <p>Giá: <?php echo $row['gia'] ?>vnđ</p>
@@ -116,6 +125,7 @@
                             <?php 
                                 $allmoney += $row['gia'] * $row['so_luong'];
                             }    
+                        }
                             ?>
                         </div>
 
