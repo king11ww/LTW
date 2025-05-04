@@ -89,22 +89,20 @@
                     <div class="b"><b>Sản phẩm trong giỏ hàng</b></div>
 
                     <div class="product-summary">
-                        <div class="inshop">
-                            <?php
+                                <?php
                                 require_once("../../../ket-noi-co-so-du-lieu.php");
                                 $sql = "select * from dohang as dh inner join sanpham as sp on sp.ten = dh.ten_san_pham where ten_dang_nhap = '$_SESSION[ten_dang_nhap]'";  
                                 $result = mysqli_query($conn, $sql);
                                 $allmoney = 0;
-                                if(mysqli_num_rows($result) <= 0)
-                                {
-                                    echo "Không có đơn hàng";
-                                }
-                                else
-                                {
-
-                                
+                                if(mysqli_num_rows($result) < 1):
+                                    echo "<h1 style='text-align: center;color: white;width: 100%;'>Không có đơn hàng<h1>";
+                                else:    
+                            ?>
+                        <div class="inshop">
+                            <?php
                                 while($row = mysqli_fetch_assoc($result)){
                             ?>
+                            
                             <div class="info">
                                 <b class="product-info">Thông tin sản phẩm</b>
                                 <div class="setting-photo">
@@ -124,12 +122,13 @@
                             </div>
                             <?php 
                                 $allmoney += $row['gia'] * $row['so_luong'];
-                            }    
-                        }
+                                }    
+                                endif;
                             ?>
                         </div>
-
-                        <!-- Thông tin đơn hàng -->
+                        <?php 
+                            if($allmoney > 0):
+                        ?>
                         <div class="howmany">
                             <b class="infomany">Thông tin đơn hàng</b>
                             <div class="summoney">
@@ -142,8 +141,8 @@
                             <a href="../user_produrt/user.html">
                                 <button class="pay">THANH TOÁN</button>
                             </a>
-                            
                         </div>
+                        <?php endif; ?>
                     </div>
 
                     <!-- Ghi chú đơn hàng -->
