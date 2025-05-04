@@ -59,7 +59,8 @@
                     <i class="fa-solid fa-cart-shopping"></i>
                     <?php
                         require_once("../../../ket-noi-co-so-du-lieu.php");
-                        $sql_so_luong_don_hang = "select * from dohang where ten_dang_nhap = '$_SESSION[ten_dang_nhap]'";  
+                        $ten_dang_nhap = $_SESSION['ten_dang_nhap'];
+                        $sql_so_luong_don_hang = "select * from dohang where ten_dang_nhap = '$ten_dang_nhap'";  
                         $so_luong_don_hang =  mysqli_num_rows(mysqli_query($conn, $sql_so_luong_don_hang));
                     ?>
                     <?php
@@ -88,32 +89,50 @@
                     <div class="b"><b>Sản phẩm trong giỏ hàng</b></div>
 
                     <div class="product-summary">
+                                <?php
+                                require_once("../../../ket-noi-co-so-du-lieu.php");
+                                $sql = "select * from dohang as dh inner join sanpham as sp on sp.ten = dh.ten_san_pham where ten_dang_nhap = '$_SESSION[ten_dang_nhap]'";  
+                                $result = mysqli_query($conn, $sql);
+                                $allmoney = 0;
+                                if(mysqli_num_rows($result) < 1):
+                                    echo "<h1 style='text-align: center;color: white;width: 100%;'>Không có đơn hàng<h1>";
+                                else:    
+                            ?>
                         <div class="inshop">
+                            <?php
+                                while($row = mysqli_fetch_assoc($result)){
+                            ?>
+                            
                             <div class="info">
                                 <b class="product-info">Thông tin sản phẩm</b>
                                 <div class="setting-photo">
                                     <div class="image-container">
-                                        <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/nguyen-chat-1L-2024-1.jpg" alt="Sản phẩm">
+                                        <img src="../img/<?php echo $row['image']?>" alt="Sản phẩm">
                                     </div>
                                     <div class="infophoto">
-                                        <b>Sữa Tươi Tiệt Trùng Nguyên Chất TH true MILK 1 L</b>
-                                        <p>Quy cách đóng gói: hộp giấy</p>
-                                        <p>Dung tích: 1 lít</p>
+                                        <b><?php echo $row['ten_san_pham'] ?></b>
+                                        <p>Tên nhãn hàngt: <?php echo $row['nhanhang'] ?></p>
                                     </div>
                                     <div class="money">
-                                        <p>Giá: 41.600 ₫</p>
+                                        <p>Giá: <?php echo $row['gia'] ?>vnđ</p>
                                         <label>Số Lượng:</label>
-                                        <input type="number" class="quantity" value="1" min="1">
+                                        <input type="number" class="quantity" value="<?php echo $row['so_luong'] ?>" min="1">
                                     </div>
                                 </div>
                             </div>
+                            <?php 
+                                $allmoney += $row['gia'] * $row['so_luong'];
+                                }    
+                                endif;
+                            ?>
                         </div>
-
-                        <!-- Thông tin đơn hàng -->
+                        <?php 
+                            if($allmoney > 0):
+                        ?>
                         <div class="howmany">
                             <b class="infomany">Thông tin đơn hàng</b>
                             <div class="summoney">
-                                <b>Tổng tiền:</b> <span class="many">41.600 ₫</span>
+                                <b>Tổng tiền:</b> <span class="many"><?php echo $allmoney ?> ₫</span>
                             </div>
                             <ul class="runmoney">
                                 <li>Phí vận chuyển sẽ được tính ở trang thanh toán.</li>
@@ -122,8 +141,8 @@
                             <a href="../user_produrt/user.html">
                                 <button class="pay">THANH TOÁN</button>
                             </a>
-                            
                         </div>
+                        <?php endif; ?>
                     </div>
 
                     <!-- Ghi chú đơn hàng -->
