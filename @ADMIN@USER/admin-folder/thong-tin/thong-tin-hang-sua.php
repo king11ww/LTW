@@ -44,7 +44,7 @@
                 <a href="thong-tin-sua.php">Thông tin sữa</a>
             </div>
             <div class="chose">
-                <a href="thong-tin-sua.php">Thông tin đơn hàng</a>
+                <a href="thong-tin-gio-hang.php">Thông tin đơn hàng</a>
             </div>
             <div class="chose">
             <a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="logout">Đăng xuất</a>

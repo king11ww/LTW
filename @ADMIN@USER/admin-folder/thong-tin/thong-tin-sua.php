@@ -2,8 +2,17 @@
     if(isset($_GET['action']) && $_GET['action'] == 'logout') {
         session_start();
         session_destroy();
-        header("Location: ../../Giao-dien/baitaplon/php/batdau.php");
+        header("Location: ../../../Giao-dien/baitaplon/php/batdau.php");
         exit();
+    }
+
+    if (isset($_GET['action']) && $_GET['action'] == 'xoa') {
+        require_once('../../../ket-noi-co-so-du-lieu.php');
+        $id = $_GET['id'];
+        $sql_delete = "DELETE FROM sanpham WHERE id = $id";
+        mysqli_query($conn, $sql_delete);
+        header("Location: thong-tin-sua.php");
+        mysqli_close();
     }
 ?>
 <!DOCTYPE html>
@@ -38,7 +47,7 @@
                 <a href="thong-tin-sua.php">Thông tin sữa</a>
             </div>
             <div class="chose">
-                <a href="thong-tin-sua.php">Thông tin đơn hàng</a>
+                <a href="thong-tin-gio-hang.php">Thông tin đơn hàng</a>
             </div>
             <div class="chose">
             <a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="logout">Đăng xuất</a>
@@ -50,25 +59,30 @@
             <h1>THÔNG TIN SỮA</h1>
             <tr>
                 <td>ID</td>
-                <td>Tên khách hàng</td>
-                <td>Giới tính</td>
-                <td>Địa chỉ</td>
-                <td>Số địa chỉ</td>
-                <td>Email</td>
+                <td>Tên sản phẩm</td>
+                <td>nhãn hàng</td>
+                <td>Giá bán</td>
+                <td>tên file ảnh</td>
             </tr>
+            <?php
+            require_once('../../../ket-noi-co-so-du-lieu.php');
+            $sql = "select * from sanpham";
+            $result = mysqli_query($conn, $sql);
+            while ($row = mysqli_fetch_array($result)) {
+            ?>
             <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
+                <td><?php echo $row['id'] ?></td>
+                <td><?php echo $row['ten'] ?></td>
+                <td><?php echo $row['nhanhang'] ?></td>
+                <td><?php echo $row['giaban'] ?></td>
+                <td><?php echo $row['image'] ?></td>
                 <td><a href="capnhat.php?khoa=<?php echo $row['id']; ?>">Cập nhật</a> </td>
 				<td>
 					<a href="xoa.php?khoa=<?php echo $row['id']; ?>" 
                     onclick = "confirm('Bạn có chắc chắn muốn xóa hay không')">Xóa</a> 
 				</td>
             </tr>
+            <?php } ?>
         </table>
         <button><a href="them-sua.php">Thêm</a></button>
     </div>
