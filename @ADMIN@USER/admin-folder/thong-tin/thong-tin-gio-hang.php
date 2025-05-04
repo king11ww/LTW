@@ -56,7 +56,7 @@
     </div>
     <div id="thong-tin-sua" >
         <table border="1">
-            <h1>THÔNG TIN SỮA</h1>
+            <h1>THÔNG TIN ĐƠN HÀNG</h1>
             <tr>
                 <td>ID</td>
                 <td>Tên đăng nhập</td>

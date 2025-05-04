@@ -62,7 +62,7 @@
 
     <div id="thong-tin-khach-hang">
         <h1>THÔNG TIN KHÁCH HÀNG</h1>
-        <table border="1">
+        <table>
             <tr>
                 <th>ID</th>
                 <th>Tên khách hàng</th>

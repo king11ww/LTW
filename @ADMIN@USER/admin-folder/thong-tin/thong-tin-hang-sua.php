@@ -54,7 +54,7 @@
     <div id="thong-tin-hang-sua">
         <table border="1">
             <h1>THÔNG TIN HÃNG SỮA</h1>
-            <tr>
+            <tr class="title">
                 <td>ID</td>
                 <td>Tên hãng sữa</td>
                 <td>Địa chỉ</td>
@@ -79,7 +79,9 @@
             </tr>
             <?php }?>
         </table>
-        <button><a href="../them/them-hang-sua.php">Thêm</a></button>
+        <div class="add">
+            <a href="../them/them-hang-sua.php" class="btn-add">Thêm</a>
+        </div> 
     </div>
 </body>
 </html>
