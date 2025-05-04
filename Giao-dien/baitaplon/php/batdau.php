@@ -7,16 +7,24 @@
         exit();
     }
     if (isset($_POST['them_gio_hang'])) {
-        require_once("../../../ket-noi-co-so-du-lieu.php");
-        $ten_dang_nhap = $_SESSION['ten_dang_nhap'];
-        $ho_ten = $_SESSION['ho_ten'];
-        $ten_san_pham = $_POST['ten_san_pham'];
-        $gia_ban = $_POST['gia_ban'];
+        if(!isset($_SESSION['ten_dang_nhap']))
+        {
+            echo "<script> alert('Bạn chưa đăng nhập hoặc đăng kí')</script>";
+        }
+        else
+        {
+            require_once("../../../ket-noi-co-so-du-lieu.php");
+            $ten_dang_nhap = $_SESSION['ten_dang_nhap'];
+            $ho_ten = $_SESSION['ho_ten'];
+            $ten_san_pham = $_POST['ten_san_pham'];
+            $gia_ban = $_POST['gia_ban'];
+            
+            $sql = "INSERT INTO dohang(ten_dang_nhap,ho_ten, soluong, ten_san_pham, gia, xacnhan) VALUES ('$ten_dang_nhap','$ho_ten', '1' ,'$ten_san_pham', '$gia_ban', '0')";
+            $kq = mysqli_query($conn, $sql);
+            mysqli_close($conn);
+            header("Location: shop.php");
+        }
         
-        $sql = "INSERT INTO dohang(ten_dang_nhap,ho_ten, soluong, ten_san_pham, gia, xacnhan) VALUES ('$ten_dang_nhap','$ho_ten', '1' ,'$ten_san_pham', '$gia_ban', '0')";
-        $kq = mysqli_query($conn, $sql);
-        mysqli_close($conn);
-        header("Location: shop.php");
     }
 ?>
 <!DOCTYPE html>
@@ -60,7 +68,7 @@
             <?php if(isset($_SESSION['ten_dang_nhap'])): ?>
             <div class="user">
                 <?php if($_SESSION['loai_tai_khoan'] == 'ADMIN'):?>
-                    |ADMIN|: <?php echo $_SESSION['ho_ten'] ?>
+                    ADMIN TỐI CAO: <?php echo $_SESSION['ho_ten'] ?>
                     <a href="../../../@ADMIN@USER/admin-folder/trang-admin.php">
                         <i class="fa-solid fa-user"></i>
                     </a>
