@@ -89,6 +89,13 @@
 
                     <div class="product-summary">
                         <div class="inshop">
+                            <?php
+                                require_once("../../ket-noi-co-so-du-lieu.php");
+                                $sql = "select * from dohang where ten_dang_nhap = '$_SESSION[ten_dang_nhap]'";  
+                                $result = mysqli_query($conn, $sql);
+                                $allmoney = 0;
+                                while($row = mysqli_fetch_array($result)){
+                            ?>
                             <div class="info">
                                 <b class="product-info">Thông tin sản phẩm</b>
                                 <div class="setting-photo">
@@ -96,24 +103,27 @@
                                         <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/nguyen-chat-1L-2024-1.jpg" alt="Sản phẩm">
                                     </div>
                                     <div class="infophoto">
-                                        <b>Sữa Tươi Tiệt Trùng Nguyên Chất TH true MILK 1 L</b>
-                                        <p>Quy cách đóng gói: hộp giấy</p>
-                                        <p>Dung tích: 1 lít</p>
+                                        <b><?php echo $row['ten_san_pham'] ?></b>
+                                        <p>ten nha san xuat: <?php echo $row['ten_nha_san_xuat'] ?></p>
                                     </div>
                                     <div class="money">
-                                        <p>Giá: 41.600 ₫</p>
+                                        <p>Giá: <?php echo $row['gia'] ?>vnđ</p>
                                         <label>Số Lượng:</label>
-                                        <input type="number" class="quantity" value="1" min="1">
+                                        <input type="number" class="quantity" value="<?php echo $row['so_luong'] ?>" min="1">
                                     </div>
                                 </div>
                             </div>
+                            <?php 
+                                $allmoney += $row['gia'] * $row['so_luong'];
+                            }    
+                            ?>
                         </div>
 
                         <!-- Thông tin đơn hàng -->
                         <div class="howmany">
                             <b class="infomany">Thông tin đơn hàng</b>
                             <div class="summoney">
-                                <b>Tổng tiền:</b> <span class="many">41.600 ₫</span>
+                                <b>Tổng tiền:</b> <span class="many"><?php echo $allmoney ?> ₫</span>
                             </div>
                             <ul class="runmoney">
                                 <li>Phí vận chuyển sẽ được tính ở trang thanh toán.</li>
