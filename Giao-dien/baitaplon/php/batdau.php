@@ -6,6 +6,18 @@
         header("Location: batdau.php");
         exit();
     }
+    if (isset($_POST['them_gio_hang'])) {
+        require_once("../../../ket-noi-co-so-du-lieu.php");
+        $ten_dang_nhap = $_SESSION['ten_dang_nhap'];
+        $ho_ten = $_SESSION['ho_ten'];
+        $ten_san_pham = $_POST['ten_san_pham'];
+        $gia_ban = $_POST['gia_ban'];
+        
+        $sql = "INSERT INTO dohang(ten_dang_nhap,ho_ten, soluong, ten_san_pham, gia, xacnhan) VALUES ('$ten_dang_nhap','$ho_ten', '1' ,'$ten_san_pham', '$gia_ban', '0')";
+        $kq = mysqli_query($conn, $sql);
+        mysqli_close($conn);
+        header("Location: shop.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,6 +84,7 @@
                     ?>
                     <div class="shopcart_value"><?php echo $so_luong_don_hang ?></div>
                     <?php } ?>
+
                 </a>
             </div>
             <a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="logout">Đăng xuất</a>
@@ -127,7 +140,12 @@
                                 </p>
                             </div>
                             <div class="button_add_card">
-                                <button><i class="fa-solid fa-cart-shopping"></i><span> Thêm vào giỏ hàng</span></button>
+                                <form method="post">
+                                    <input type="hidden" name="ten_san_pham" value = "<?php echo $row['ten']?>">
+                                    <input type="hidden" name="gia_ban" value = "<?php echo $row['giaban']?>">
+                                    <button type="submit" name="them_gio_hang"><i class="fa-solid fa-cart-shopping"></i><span> Thêm vào giỏ hàng</span></button>
+                                </form>
+                                
                             </div>
                         </div>
                         <?php
