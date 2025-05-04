@@ -1,11 +1,11 @@
 <?php
-    require_once('../../ket-noi-co-so-du-lieu.php');
+    require_once('../../../ket-noi-co-so-du-lieu.php');
     $sql = "SELECT * FROM hangsua";
     $result = mysqli_query($conn, $sql);
     if(isset($_GET['action']) && $_GET['action'] == 'logout') {
         session_start();
         session_destroy();
-        header("Location: ../../Giao-dien/baitaplon/php/batdau.php");
+        header("Location: ../../../Giao-dien/baitaplon/php/batdau.php");
         exit();
     }
 ?>
@@ -15,7 +15,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/bb6c8d9b87.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css-folder/admins.css">
+    <link rel="stylesheet" href="../../css-folder/admins.css">
     <style>
         
     </style>
@@ -31,6 +31,9 @@
             </a>
         </div>
         <div class="menu">
+            <div class="chose">
+                <a href="../../../Giao-dien/baitaplon/php/batdau.php">Trang Chủ</a>
+            </div>
             <div class="chose">
                 <a href="thong-tin-khach-hang.php">Thông tin khách hàng</a>
             </div>
@@ -76,7 +79,7 @@
             </tr>
             <?php }?>
         </table>
-        <button><a href="them-hang-sua.php">Thêm</a></button>
+        <button><a href="../them/them-hang-sua.php">Thêm</a></button>
     </div>
 </body>
 </html>

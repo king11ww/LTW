@@ -47,10 +47,17 @@
             </div>
             <?php if(isset($_SESSION['ten_dang_nhap'])): ?>
             <div class="user">
-                Người dùng: <?php echo $_SESSION['ho_ten'] ?>
-                <a href="user.php">
-                    <i class="fa-solid fa-user"></i>
-                </a>
+                <?php if($_SESSION['loai_tai_khoan'] == 'ADMIN'):?>
+                    ADMIN TỐI CAO: <?php echo $_SESSION['ho_ten'] ?>
+                    <a href="../../../@ADMIN@USER/admin-folder/trang-admin.php">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                <?php else:?>
+                    Người dùng: <?php echo $_SESSION['ho_ten'] ?>
+                    <a href="user.php">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                <?php endif?>  
             </div>
             <div class="shopcart">
                 <a href="shop.php">

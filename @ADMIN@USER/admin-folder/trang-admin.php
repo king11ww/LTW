@@ -17,30 +17,34 @@
 </head>
 <body>
     <div class="header">
-            <div class="logo">
-                <a href="">
-                <i class="fa-solid fa-glass-water"></i>
-                <span>Milk</span>
-                <div class="space"><h6>Admin space</h6></div>  
-                </a>
+        <div class="logo">
+            <a href="">
+            <i class="fa-solid fa-glass-water"></i>
+            <span>Milk</span>
+            <div class="space"><h6>Admin space</h6></div>  
+            </a>
+        </div>
+        <div class="menu">
+            <div class="chose">
+                <a href="../../Giao-dien/baitaplon/php/batdau.php">Trang Chủ</a>
             </div>
-            <div class="menu">
-                <div class="chose">
-                    <a href="thong-tin-khach-hang.php">Thông tin khách hàng</a>
-                </div>
-                <div class="chose">
-                    <a href="thong-tin-hang-sua.php">Thông tin hãng sữa</a>
-                </div>
-                <div class="chose">
-                    <a href="thong-tin-sua.php">Thông tin sữa</a>
-                </div>
-                <div class="chose">
-                    <a href="thong-tin-sua.php">Thông tin đơn hàng</a>
-                </div>
-                <div class="chose">
-                    <a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="logout">Đăng xuất</a>
-                </div>
+            <div class="chose">
+                <a href="thong-tin/thong-tin-khach-hang.php">Thông tin khách hàng</a>
+            </div>
+            <div class="chose">
+                <a href="thong-tin/thong-tin-hang-sua.php">Thông tin hãng sữa</a>
+            </div>
+            <div class="chose">
+                <a href="thong-tin/thong-tin-sua.php">Thông tin sữa</a>
+            </div>
+            <div class="chose">
+                <a href="thong-tin/thong-tin-sua.php">Thông tin đơn hàng</a>
+            </div>
+            <div class="chose">
+                <a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="logout">Đăng xuất</a>
             </div>
         </div>
+    </div>
+    <p style="text-align:center; font-size:200px;">ADMIN</p>
 </body>
 </html>

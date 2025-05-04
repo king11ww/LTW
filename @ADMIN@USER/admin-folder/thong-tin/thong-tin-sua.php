@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/bb6c8d9b87.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css-folder/admins.css">
+    <link rel="stylesheet" href="../../css-folder/admins.css">
     <title>Thông tin sữa</title>
 </head>
 <body>
@@ -25,6 +25,9 @@
             </a>
         </div>
         <div class="menu">
+            <div class="chose">
+                <a href="../../../Giao-dien/baitaplon/php/batdau.php">Trang Chủ</a>
+            </div>
             <div class="chose">
                 <a href="thong-tin-khach-hang.php">Thông tin khách hàng</a>
             </div>
