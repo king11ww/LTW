@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    if(isset($_GET['action']) && $_GET['action'] == 'logout')
+    {
+        session_destroy();
+        header("Location: batdau.php");
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,20 +19,19 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
+    <div class="header">
             <div class="logo">
                 <a href="batdau.php">
                 <i class="fa-solid fa-glass-water"></i>
                 <span>Milk</span>   
                 </a>
             </div>
-            
             <div class="menu">
                 <div class="chose">
                     <a href="batdau.php">Home</a>
                 </div>
                 <div class="chose">
-                    <a href="batdau.php">Sản Phẩm</a>
+                    <a href="sanpham.php">Sản Phẩm</a>
                 </div>
                 <div class="chose">
                     <a href="batdau.php">Thông tin</a>
@@ -32,17 +40,43 @@
                     <a href="batdau.php">Liên hệ</a>
                 </div>
             </div>
+            <?php if(isset($_SESSION['ten_dang_nhap'])): ?>
             <div class="user">
-                <a href="../user_produrt/user.html">
-                    <i class="fa-solid fa-user"></i>
-                </a>
+                <?php if($_SESSION['loai_tai_khoan'] == 'ADMIN'):?>
+                    ADMIN TỐI CAO: <?php echo $_SESSION['ho_ten'] ?>
+                    <a href="../../../@ADMIN@USER/admin-folder/trang-admin.php">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                <?php else:?>
+                    Người dùng: <?php echo $_SESSION['ho_ten'] ?>
+                    <a href="user.php">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                <?php endif?>  
             </div>
             <div class="shopcart">
-                <a href="#">
+                <a href="shop.php">
                     <i class="fa-solid fa-cart-shopping"></i>
-                    <div class="shopcart_value">1</div>
+                    <?php
+                        require_once("../../../ket-noi-co-so-du-lieu.php");
+                        $sql_so_luong_don_hang = "select * from dohang where ten_dang_nhap = '$_SESSION[ten_dang_nhap]'";  
+                        $so_luong_don_hang =  mysqli_num_rows(mysqli_query($conn, $sql_so_luong_don_hang));
+                    ?>
+                    <?php
+                        if($so_luong_don_hang > 0){
+                    ?>
+                    <div class="shopcart_value"><?php echo $so_luong_don_hang ?></div>
+                    <?php } ?>
                 </a>
             </div>
+            <a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="logout">Đăng xuất</a>
+            <?php else: ?>
+            <div class="user">
+                <a href="../../../@ADMIN@USER/@dang-nhap@dang-ki/dang-nhap.php">Đăng nhập</a> |
+                <a href="../../../@ADMIN@USER/@dang-nhap@dang-ki/dang-ki.php" >Đăng ký</a>
+            </div>
+            <?php endif; ?>
+
         </div>
         <div class="header1">
             <div class="shopcontent">

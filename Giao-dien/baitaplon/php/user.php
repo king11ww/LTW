@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    if(isset($_GET['action']) && $_GET['action'] == 'logout')
+    {
+        session_destroy();
+        header("Location: batdau.php");
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,62 +18,80 @@
 <body>
   <div class="container">
   <div class="header">
-    <div class="logo">
-        <a href="batdau.php">
-        <i class="fa-solid fa-glass-water"></i>
-        <span>Milk</span>   
-        </a>
-    </div>
-    
-    <div class="menu">
-        <div class="chose">
-            <a href="batdau.php">Home</a>
+            <div class="logo">
+                <a href="batdau.php">
+                <i class="fa-solid fa-glass-water"></i>
+                <span>Milk</span>   
+                </a>
+            </div>
+            <div class="menu">
+                <div class="chose">
+                    <a href="batdau.php">Home</a>
+                </div>
+                <div class="chose">
+                    <a href="sanpham.php">Sản Phẩm</a>
+                </div>
+                <div class="chose">
+                    <a href="batdau.php">Thông tin</a>
+                </div>
+                <div class="chose">
+                    <a href="batdau.php">Liên hệ</a>
+                </div>
+            </div>
+            <?php if(isset($_SESSION['ten_dang_nhap'])): ?>
+            <div class="user">
+                <?php if($_SESSION['loai_tai_khoan'] == 'ADMIN'):?>
+                    ADMIN TỐI CAO: <?php echo $_SESSION['ho_ten'] ?>
+                    <a href="../../../@ADMIN@USER/admin-folder/trang-admin.php">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                    <?php else:?>
+                    <a href="user.php">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                <?php endif?>  
+            </div>
+            <div class="shopcart">
+                <a href="shop.php">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <?php
+                        require_once("../../../ket-noi-co-so-du-lieu.php");
+                        $sql_so_luong_don_hang = "select * from dohang where ten_dang_nhap = '$_SESSION[ten_dang_nhap]'";  
+                        $so_luong_don_hang =  mysqli_num_rows(mysqli_query($conn, $sql_so_luong_don_hang));
+                    ?>
+                    <?php
+                        if($so_luong_don_hang > 0){
+                    ?>
+                    <div class="shopcart_value"><?php echo $so_luong_don_hang ?></div>
+                    <?php } ?>
+                </a>
+            </div>
+            <?php endif; ?>
+
         </div>
-        <div class="chose">
-            <a href="batdau.php">Sản Phẩm</a>
-        </div>
-        <div class="chose">
-            <a href="batdau.php">Thông tin</a>
-        </div>
-        <div class="chose">
-            <a href="batdau.php">Liên hệ</a>
-        </div>
-    </div>
-    <div class="user">
-        <a href="#">
-            <i class="fa-solid fa-user"></i>
-        </a>
-    </div>
-    <div class="shopcart">
-        <a href="../ShoppingCart/shop.html">
-            <i class="fa-solid fa-cart-shopping"></i>
-            <div class="shopcart_value">1</div>
-        </a>
-    </div>
-</div>
   <div class="profile-card">
     <div class="profile-header">
       <img src="https://e7.pngegg.com/pngimages/358/473/png-clipart-computer-icons-user-profile-person-child-heroes.png" alt="Avatar" class="avatar">
       <div class="user-info">
-        <h2>John Doe</h2>
-        <p>john.doe@example.com</p>
+        <h2><?php echo $_SESSION['ten_dang_nhap'] ?></h2>
+        <p><?php echo $_SESSION['email'] ?></p>
       </div>
-      <button class="settings-btn">⚙</button>
+      <button class="settings-btn"><a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="logout">Đăng xuất</a></button>
     </div>
 
     <form class="profile-form">
       <label>Full Name</label>
-      <input type="text" value="John Doe">
+      <input type="text" value="<?php echo $_SESSION['ho_ten'] ?>">
 
       <label>Email</label>
-      <input type="email" value="john.doe@example.com" >
+      <input type="email" value="<?php echo $_SESSION['email'] ?>" >
       <small>Email cannot be changed</small>
 
       <label>Phone</label>
-      <input type="text" value="+84 123 456 789">
+      <input type="text" value="<?php echo $_SESSION['so_dien_thoai'] ?>">
 
       <label>Address</label>
-      <input type="text" value="123 Nguyen Hue, District 1, Ho Chi Minh City">
+      <input type="text" value="<?php echo $_SESSION['dia_chi'] ?>">
 
       <div class="button-group">
         <button type="submit" class="save">Save Changes</button>
