@@ -43,7 +43,7 @@
             <?php if(isset($_SESSION['ten_dang_nhap'])): ?>
             <div class="user">
                 <?php if($_SESSION['loai_tai_khoan'] == 'ADMIN'):?>
-                    ADMIN TỐI CAO: <?php echo $_SESSION['ho_ten'] ?>
+                    |ADMIN|: <?php echo $_SESSION['ho_ten'] ?>
                     <a href="../../../@ADMIN@USER/admin-folder/trang-admin.php">
                         <i class="fa-solid fa-user"></i>
                     </a>
@@ -70,7 +70,7 @@
                     <?php } ?>
                 </a>
             </div>
-            <a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="logout">Đăng xuất</a>
+            <a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" style="font-size:15px;" class="logout">Đăng xuất</a>
             <?php else: ?>
             <div class="user">
                 <a href="../../../@ADMIN@USER/@dang-nhap@dang-ki/dang-nhap.php">Đăng nhập</a> |
@@ -116,12 +116,12 @@
                                     <div class="money">
                                         <p>Giá: <?php echo $row['gia'] ?>vnđ</p>
                                         <label>Số Lượng:</label>
-                                        <input type="number" class="quantity" value="<?php echo $row['so_luong'] ?>" min="1">
+                                        <input type="number" class="quantity" value="<?php echo $row['soluong'] ?>" min="1">
                                     </div>
                                 </div>
                             </div>
                             <?php 
-                                $allmoney += $row['gia'] * $row['so_luong'];
+                                $allmoney += $row['gia'] * $row['soluong'];
                                 }    
                                 endif;
                             ?>

@@ -41,7 +41,7 @@
             <?php if(isset($_SESSION['ten_dang_nhap'])): ?>
             <div class="user">
                 <?php if($_SESSION['loai_tai_khoan'] == 'ADMIN'):?>
-                    ADMIN TỐI CAO: <?php echo $_SESSION['ho_ten'] ?>
+                    |ADMIN|: <?php echo $_SESSION['ho_ten'] ?>
                     <a href="../../../@ADMIN@USER/admin-folder/trang-admin.php">
                         <i class="fa-solid fa-user"></i>
                     </a>
