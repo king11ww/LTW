@@ -121,7 +121,7 @@
                                 </div>
                             </div>
                             <?php 
-                                $allmoney += $row['gia'] * $row['soluong'];
+                                $allmoney += $row['gia'];
                                 }    
                                 endif;
                             ?>
@@ -144,7 +144,6 @@
                         </div>
                         <?php endif; ?>
                     </div>
-
                     <!-- Ghi chú đơn hàng -->
                     <div class="noteoder">
                         <b>Ghi chú cho đơn hàng</b>

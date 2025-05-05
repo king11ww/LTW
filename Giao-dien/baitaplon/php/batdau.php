@@ -12,19 +12,24 @@
             echo "<script> alert('Bạn chưa đăng nhập hoặc đăng kí')</script>";
         }
         else
-        {
+        {  
             require_once("../../../ket-noi-co-so-du-lieu.php");
             $ten_dang_nhap = $_SESSION['ten_dang_nhap'];
             $ho_ten = $_SESSION['ho_ten'];
             $ten_san_pham = $_POST['ten_san_pham'];
             $gia_ban = $_POST['gia_ban'];
-            
-            $sql = "INSERT INTO dohang(ten_dang_nhap,ho_ten, soluong, ten_san_pham, gia, xacnhan) VALUES ('$ten_dang_nhap','$ho_ten', '1' ,'$ten_san_pham', '$gia_ban', '0')";
-            $kq = mysqli_query($conn, $sql);
-            mysqli_close($conn);
-            header("Location: shop.php");
+            $sql_shop = "select * from dohang where ten_dang_nhap = '$ten_dang_nhap' and ten_san_pham = '$ten_san_pham'";
+            $kq_shop = mysqli_query($conn, $sql_shop);
+            if(mysqli_num_rows($kq_shop) == 0):
+                $sql_insert = "INSERT INTO dohang(ten_dang_nhap,ho_ten, soluong, ten_san_pham, gia, xacnhan) VALUES ('$ten_dang_nhap','$ho_ten', '1' ,'$ten_san_pham', '$gia_ban', '0')";
+                $kq_insert = mysqli_query($conn, $sql_insert);
+            else:
+                $sql_update = "update dohang set soluong = soluong + 1 where ten_dang_nhap = '$ten_dang_nhap' and ten_san_pham = '$ten_san_pham'";
+                $kq_update = mysqli_query($conn, $sql_update);
+                $sql_update = "update dohang set gia = '$gia_ban' * soluong";
+                $kq_update = mysqli_query($conn, $sql_update);
+            endif;
         }
-        
     }
 ?>
 <!DOCTYPE html>
@@ -114,7 +119,7 @@
                     </p>
                 </div>
                 <div class="home_img">
-                    <img src="" alt="">
+                    <img src="../img/4b5cd454-08b2-4eb0-8b90-6b3e3750231e.png" alt="">
                 </div>
             </div>
             <div class="products">
@@ -153,7 +158,6 @@
                                     <input type="hidden" name="gia_ban" value = "<?php echo $row['giaban']?>">
                                     <button type="submit" name="them_gio_hang"><i class="fa-solid fa-cart-shopping"></i><span> Thêm vào giỏ hàng</span></button>
                                 </form>
-                                
                             </div>
                         </div>
                         <?php
@@ -172,7 +176,7 @@
                 </div>
                 <div class="about_contents">
                     <div class="about_contents_img">
-                        <img src="" alt="">
+                        <img src="../img/4b5cd454-08b2-4eb0-8b90-6b3e3750231e.png" alt="">
                     </div>
                     <div class="about_contents_content">
                             <span>Triết lý từ trang trại đến bàn ăn</span>
