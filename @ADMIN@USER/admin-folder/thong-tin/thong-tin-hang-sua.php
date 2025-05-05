@@ -38,13 +38,13 @@
                 <a href="thong-tin-khach-hang.php">Thông tin khách hàng</a>
             </div>
             <div class="chose">
-                <a href="thong-tin-hang-sua.php">Thông tin hãng sữa</a>
+                <a href="thong-tin-hang-sua.php">hãng sữa</a>
             </div>
             <div class="chose">
                 <a href="thong-tin-sua.php">Thông tin sữa</a>
             </div>
             <div class="chose">
-                <a href="thong-tin-gio-hang.php">Thông tin đơn hàng</a>
+                <a href="thong-tin-gio-hang.php">đơn hàng</a>
             </div>
             <div class="chose">
             <a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="logout">Đăng xuất</a>
