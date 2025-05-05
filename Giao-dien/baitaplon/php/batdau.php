@@ -130,7 +130,6 @@
                     </p>
                 </div>
                 <div class="products_maincontent">
-                    <input type="search" placeholder="Tìm kiếm sản phẩm...">
                     <div class="products_product">
                         <?php
                             while($row = mysqli_fetch_assoc($kq)){
