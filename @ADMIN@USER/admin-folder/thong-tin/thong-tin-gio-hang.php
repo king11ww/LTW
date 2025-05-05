@@ -67,7 +67,7 @@
             </tr>
             <?php
             require_once('../../../ket-noi-co-so-du-lieu.php');
-            $sql = "select * from dohang";
+            $sql = "select * from dohang where xacnhan = 1";
             $result = mysqli_query($conn, $sql);
             while ($row = mysqli_fetch_array($result)) {
             ?>

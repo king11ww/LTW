@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Kết nối cơ sở dữ liệu
-    require_once '../../ket-noi-co-so-du-lieu.php';
+    require_once('../../../ket-noi-co-so-du-lieu.php');
     
     // Lấy dữ liệu từ form
     $ten_hang_sua = $_POST['ten_hang_sua'];
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } 
     else {
         if ($conn->query($sql) === TRUE) {
-            header("Location: thong-tin-hang-sua.php");
+            header("Location: ../thong-tin/thong-tin-hang-sua.php");
             exit();
         } else {
             echo "Lỗi: " . $sql . "<br>" . $conn->error;

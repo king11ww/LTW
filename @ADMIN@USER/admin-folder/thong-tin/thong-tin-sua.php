@@ -84,7 +84,7 @@
             </tr>
             <?php } ?>
         </table>
-        <button><a href="them-sua.php">Thêm</a></button>
+        <button><a href="../them/them-sua.php">Thêm</a></button>
     </div>
 </body>
 </html>
