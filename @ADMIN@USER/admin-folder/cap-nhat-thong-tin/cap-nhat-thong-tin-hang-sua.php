@@ -49,30 +49,30 @@
 
         if(isset($_GET['cap-nhat']))
         {   $id = $_GET['id'];
-            $name = $_GET['ten-khach-hang'];
-            $gioi_tinh = $_GET['gioi-tinh'];
-            $dia_chi = $_GET['dia-chi'];
+            $ten_hang_sua = $_GET['ten_hang_sua'];
+            $dia_chi = $_GET['dia_chi'];
+            $dien_thoai = $_GET['dien_thoai'];
             $email = $_GET['email'];
             require_once('../../../ket-noi-co-so-du-lieu.php');
-                $sql = "update khachhang set ho_ten = '$name', gioi_tinh = '$gioi_tinh', dia_chi = '$dia_chi', email = '$email' where id = '$id'";
+                $sql = "update hangsua set ten_hang_sua = '$ten_hang_sua', dia_chi = '$dia_chi', dien_thoai = '$dien_thoai', email = '$email' where id = '$id'";
                 mysqli_query($conn, $sql);
                 mysqli_close($conn);
-                header("Location: ../thong-tin/thong-tin-khach-hang.php");
+                header("Location: ../thong-tin/thong-tin-hang-sua.php");
         }
         if(isset($_GET['huy']))
         {
-            header("Location: ../thong-tin/thong-tin-khach-hang.php");
+            header("Location: ../thong-tin/thong-tin-hang-sua.php");
         }
     ?>
     <form method="get">
         <label for="id">ID</label>
         <input type="text" name="id" id="id" value="<?php echo $_GET['id']?>" readonly>
-        <label for="ten-khach-hang">Tên Khách hàng</label>
-        <input type="text" name="ten-khach-hang" id="ten-khach-hang" value="<?php echo $_GET['ho_ten']?>">
-        <label for="gioi-tinh">Giới Tính</label>
-        <input type="text" name="gioi-tinh" id="gioi-tinh" value="<?php echo $_GET['gioi_tinh']?>">
-        <label for="dia-chi">Địa chỉ</label>
-        <input type="text" name="dia-chi" id="dia-chi" value="<?php echo $_GET['dia_chi']?>">
+        <label for="ten_hang_sua">Tên Hãng Sữa</label>
+        <input type="text" name="ten_hang_sua" id="ten_hang_sua" value="<?php echo $_GET['ten_hang_sua']?>">
+        <label for="dia_chi">Địa chỉ</label>
+        <input type="text" name="dia_chi" id="dia_chi" value="<?php echo $_GET['dia_chi']?>">
+        <label for="dien_thoai">Điện thoại</label>
+        <input type="text" name="dien_thoai" id="dien_thoai" value="<?php echo $_GET['dien_thoai']?>">
         <label for="email">Email</label>
         <input type="text" name="email" id="email" value="<?php echo $_GET['email']?>">
         <input type="submit" name="cap-nhat" value="Cập nhật" onclick="return xacNhanCapNhat()">
@@ -82,17 +82,15 @@
  <script>
     function xacNhanCapNhat() {
         let id = document.getElementById("id").value;
-        let ten = document.getElementById("ten-khach-hang").value;
-        let gioiTinh = document.getElementById("gioi-tinh").value;
-        let diaChi = document.getElementById("dia-chi").value;
+        let ten_hang_sua = document.getElementById("ten_hang_sua").value;
+        let dia_chi = document.getElementById("dia_chi").value;
         let email = document.getElementById("email").value;
 
         return confirm(
-            "Thông tin khách hàng sau cập nhật sẽ là:\n" +
+            "Thông tin Hãng sữa sau cập nhật sẽ là:\n" +
             "ID: " + id + "\n" +
-            "Tên khách hàng: " + ten + "\n" +
-            "Giới tính: " + gioiTinh + "\n" +
-            "Địa chỉ: " + diaChi + "\n" +
+            "Tên Hãng: " + ten_hang_sua + "\n" +
+            "Địa chỉ: " + dia_chi + "\n" +
             "Email: " + email
         );
     }

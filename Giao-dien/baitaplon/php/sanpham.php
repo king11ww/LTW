@@ -5,6 +5,31 @@
         session_destroy();
         exit();
     }
+    if (isset($_POST['them_gio_hang'])) {
+        if(!isset($_SESSION['ten_dang_nhap']))
+        {
+            echo "<script> alert('Bạn chưa đăng nhập hoặc đăng kí')</script>";
+        }
+        else
+        {  
+            require_once("../../../ket-noi-co-so-du-lieu.php");
+            $ten_dang_nhap = $_SESSION['ten_dang_nhap'];
+            $ho_ten = $_SESSION['ho_ten'];
+            $ten_san_pham = $_POST['ten_san_pham'];
+            $gia_ban = $_POST['gia_ban'];
+            $sql_shop = "select * from dohang where ten_dang_nhap = '$ten_dang_nhap' and ten_san_pham = '$ten_san_pham'";
+            $kq_shop = mysqli_query($conn, $sql_shop);
+            if(mysqli_num_rows($kq_shop) == 0):
+                $sql_insert = "INSERT INTO dohang(ten_dang_nhap,ho_ten, soluong, ten_san_pham, gia, xacnhan) VALUES ('$ten_dang_nhap','$ho_ten', '1' ,'$ten_san_pham', '$gia_ban', '0')";
+                $kq_insert = mysqli_query($conn, $sql_insert);
+            else:
+                $sql_update = "update dohang set soluong = soluong + 1 where ten_dang_nhap = '$ten_dang_nhap' and ten_san_pham = '$ten_san_pham'";
+                $kq_update = mysqli_query($conn, $sql_update);
+                $sql_update = "update dohang set gia = '$gia_ban' * soluong";
+                $kq_update = mysqli_query($conn, $sql_update);
+            endif;
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,7 +98,7 @@
                     <?php } ?>
                 </a>
             </div>
-            <a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="logout">Đăng xuất</a>
+            <a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" style="font-size:15px;" class="logout">Đăng xuất</a>
             <?php else: ?>
             <div class="user">
                 <a href="../../../@ADMIN@USER/@dang-nhap@dang-ki/dang-nhap.php">Đăng nhập</a> |
@@ -114,7 +139,11 @@
                                 </p>
                             </div>
                             <div class="button_add_card">
-                                <button><i class="fa-solid fa-cart-shopping"></i><span> Thêm vào giỏ hàng</span></button>
+                                <form method="post">
+                                    <input type="hidden" name="ten_san_pham" value = "<?php echo $row['ten']?>">
+                                    <input type="hidden" name="gia_ban" value = "<?php echo $row['giaban']?>">
+                                    <button type="submit" name="them_gio_hang"><i class="fa-solid fa-cart-shopping"></i><span> Thêm vào giỏ hàng</span></button>
+                                </form>
                             </div>
                         </div>
                         <?php

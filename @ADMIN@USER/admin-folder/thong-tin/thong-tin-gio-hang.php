@@ -47,7 +47,7 @@
                 <a href="thong-tin-sua.php">Thông tin sữa</a>
             </div>
             <div class="chose">
-                <a href="thong-tin-gio-hang.php">Thông tin đơn hàng</a>
+                <a href="thong-tin-gio-hang.php">đơn hàng</a>
             </div>
             <div class="chose">
             <a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="logout">Đăng xuất</a>
@@ -67,7 +67,7 @@
             </tr>
             <?php
             require_once('../../../ket-noi-co-so-du-lieu.php');
-            $sql = "select * from dohang";
+            $sql = "select * from dohang where xacnhan = 1";
             $result = mysqli_query($conn, $sql);
             while ($row = mysqli_fetch_array($result)) {
             ?>

@@ -47,7 +47,7 @@
                 <a href="thong-tin-sua.php">Thông tin sữa</a>
             </div>
             <div class="chose">
-                <a href="thong-tin-gio-hang.php">Thông tin đơn hàng</a>
+                <a href="thong-tin-gio-hang.php">đơn hàng</a>
             </div>
             <div class="chose">
             <a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="logout">Đăng xuất</a>
@@ -76,17 +76,21 @@
                 <td><?php echo $row['nhanhang'] ?></td>
                 <td><?php echo $row['giaban'] ?></td>
                 <td><?php echo $row['image'] ?></td>
-                <td><a href="capnhat.php?khoa=<?php echo $row['id']; ?>">Cập nhật</a> </td>
+                <td><a href="../cap-nhat-thong-tin/cap-nhat-sua.php?id=<?php echo $row['id'];?>&ten=<?php echo $row['ten'];?>&nhanhang=<?php echo $row['nhanhang'];?>&giaban=<?php echo $row['giaban']?>&image=<?php echo $row['image']?>">Cập nhật</a> </td>
 				<td>
-					<a href="xoa.php?khoa=<?php echo $row['id']; ?>" 
+					<a href="action=xoa?khoa=<?php echo $row['id']; ?>" 
                     onclick = "confirm('Bạn có chắc chắn muốn xóa hay không')">Xóa</a> 
 				</td>
             </tr>
             <?php } ?>
         </table>
+<<<<<<< HEAD
         <div class="add">
             <a href="../them/them-sua.php" class="btn-add">Thêm</a>
         </div>
+=======
+        <button><a href="../them/them-sua.php">Thêm</a></button>
+>>>>>>> a3672dc1c6c0024cbc4baf7370fc1f21476864d4
     </div>
 </body>
 </html>

@@ -6,6 +6,31 @@
         header("Location: batdau.php");
         exit();
     }
+    if (isset($_POST['them_gio_hang'])) {
+        if(!isset($_SESSION['ten_dang_nhap']))
+        {
+            echo "<script> alert('Bạn chưa đăng nhập hoặc đăng kí')</script>";
+        }
+        else
+        {  
+            require_once("../../../ket-noi-co-so-du-lieu.php");
+            $ten_dang_nhap = $_SESSION['ten_dang_nhap'];
+            $ho_ten = $_SESSION['ho_ten'];
+            $ten_san_pham = $_POST['ten_san_pham'];
+            $gia_ban = $_POST['gia_ban'];
+            $sql_shop = "select * from dohang where ten_dang_nhap = '$ten_dang_nhap' and ten_san_pham = '$ten_san_pham'";
+            $kq_shop = mysqli_query($conn, $sql_shop);
+            if(mysqli_num_rows($kq_shop) == 0):
+                $sql_insert = "INSERT INTO dohang(ten_dang_nhap,ho_ten, soluong, ten_san_pham, gia, xacnhan) VALUES ('$ten_dang_nhap','$ho_ten', '1' ,'$ten_san_pham', '$gia_ban', '0')";
+                $kq_insert = mysqli_query($conn, $sql_insert);
+            else:
+                $sql_update = "update dohang set soluong = soluong + 1 where ten_dang_nhap = '$ten_dang_nhap' and ten_san_pham = '$ten_san_pham'";
+                $kq_update = mysqli_query($conn, $sql_update);
+                $sql_update = "update dohang set gia = '$gia_ban' * soluong";
+                $kq_update = mysqli_query($conn, $sql_update);
+            endif;
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +73,7 @@
             <?php if(isset($_SESSION['ten_dang_nhap'])): ?>
             <div class="user">
                 <?php if($_SESSION['loai_tai_khoan'] == 'ADMIN'):?>
-                    ADMIN TỐI CAO: <?php echo $_SESSION['ho_ten'] ?>
+                    ADMIN TỐI CAO : <?php echo $_SESSION['ho_ten'] ?>
                     <a href="../../../@ADMIN@USER/admin-folder/trang-admin.php">
                         <i class="fa-solid fa-user"></i>
                     </a>
@@ -72,9 +97,10 @@
                     ?>
                     <div class="shopcart_value"><?php echo $so_luong_don_hang ?></div>
                     <?php } ?>
+
                 </a>
             </div>
-            <a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="logout">Đăng xuất</a>
+            <a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" style="font-size:15px;" class="logout">Đăng xuất</a>
             <?php else: ?>
             <div class="user">
                 <a href="../../../@ADMIN@USER/@dang-nhap@dang-ki/dang-nhap.php">Đăng nhập</a> |
@@ -93,7 +119,7 @@
                     </p>
                 </div>
                 <div class="home_img">
-                    <img src="" alt="">
+                    <img src="../img/4b5cd454-08b2-4eb0-8b90-6b3e3750231e.png" alt="">
                 </div>
             </div>
             <div class="products">
@@ -104,7 +130,6 @@
                     </p>
                 </div>
                 <div class="products_maincontent">
-                    <input type="search" placeholder="Tìm kiếm sản phẩm...">
                     <div class="products_product">
                         <?php
                             while($row = mysqli_fetch_assoc($kq)){
@@ -127,7 +152,11 @@
                                 </p>
                             </div>
                             <div class="button_add_card">
-                                <button><i class="fa-solid fa-cart-shopping"></i><span> Thêm vào giỏ hàng</span></button>
+                                <form method="post">
+                                    <input type="hidden" name="ten_san_pham" value = "<?php echo $row['ten']?>">
+                                    <input type="hidden" name="gia_ban" value = "<?php echo $row['giaban']?>">
+                                    <button type="submit" name="them_gio_hang"><i class="fa-solid fa-cart-shopping"></i><span> Thêm vào giỏ hàng</span></button>
+                                </form>
                             </div>
                         </div>
                         <?php
@@ -146,7 +175,7 @@
                 </div>
                 <div class="about_contents">
                     <div class="about_contents_img">
-                        <img src="" alt="">
+                        <img src="../img/4b5cd454-08b2-4eb0-8b90-6b3e3750231e.png" alt="">
                     </div>
                     <div class="about_contents_content">
                             <span>Triết lý từ trang trại đến bàn ăn</span>

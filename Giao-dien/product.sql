@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2025 at 08:56 AM
+-- Generation Time: May 05, 2025 at 07:15 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -33,7 +33,8 @@ CREATE TABLE `dohang` (
   `ho_ten` varchar(255) NOT NULL,
   `soluong` int(11) NOT NULL DEFAULT 1,
   `ten_san_pham` varchar(255) NOT NULL,
-  `gia` int(11) NOT NULL
+  `gia` int(11) NOT NULL,
+  `xacnhan` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -104,10 +105,10 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`id`, `ten`, `nhanhang`, `giaban`, `image`) VALUES
-(47, 'Sữa tươi tiệt trùng 100% Vinamilk 180ml (48 hộp/thùng)', 'Vinamilk', 422081, 'Sua_tuoi_tiet_trung_100%_Vinamilk_180ml.png'),
+(47, 'Sữa tươi tiệt trùng 100% Vinamilk 180ml (48 hộp/thùng)', 'Vinamilk', 422081, 'Sua_bot_Dielac_Grow_Plus_1+_800g.png'),
 (48, 'Sữa bột Dielac Grow Plus 1+ 800g', 'Vinamilk', 412854, 'Sua_bot_Dielac_Grow_Plus_1+_800g.png'),
-(49, 'Sữa bột Optimum Gold 2 800g', 'Vinamilk', 419000, 'Sua_bot_Optimum_Gold_2_800g.png'),
-(50, 'Sữa bột Optimum Gold 3 850g', 'Vinamilk', 419000, 'Sua_bot_Optimum_Gold_3_850g.png'),
+(49, 'Sữa bột Optimum Gold 2 800g', 'Vinamilk', 419000, 'Sua_bot_Dielac_Grow_Plus_1+_800g.png'),
+(50, 'Sữa bột Optimum Gold 3 850g', 'Vinamilk', 419000, 'Sua_bot_Dielac_Grow_Plus_1+_800g.png'),
 (51, 'Sữa uống dinh dưỡng Yoko Gold 110ml (lốc 4 hộp)', 'Vinamilk', 120000, 'Sua_uong_dinh_duong_Yoko_Gold_110ml.png'),
 (52, 'Sữa uống dinh dưỡng Yoko Gold 180ml (lốc 4 hộp)', 'Vinamilk', 189000, 'Sua_uong_dinh_duong_Yoko_Gold_180ml.png'),
 (53, 'Sữa tươi tiệt trùng TH true MILK 110ml (48 hộp/thùng)', 'TH true MILK', 298800, 'Sua_tuoi_tiet_trung_TH_true_MILK_110ml.png'),
@@ -153,7 +154,7 @@ ALTER TABLE `sanpham`
 -- AUTO_INCREMENT for table `dohang`
 --
 ALTER TABLE `dohang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `sanpham`
