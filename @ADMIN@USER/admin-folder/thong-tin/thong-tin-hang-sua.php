@@ -72,7 +72,7 @@
                 <td><?php echo $row['dia_chi']?></td>
                 <td><?php echo $row['dien_thoai']?></td>
                 <td><?php echo $row['email']?></td>
-                <td><a href="../cap-nhat-thong-tin/cap-nhat-thong-tin-hang-sua.php?khoa=<?php echo $row['id']; ?>">Cập nhật</a> </td>
+                <td><a href="../cap-nhat-thong-tin/cap-nhat-thong-tin-hang-sua.php?id=<?php echo $row['id'];?>&ten_hang_sua=<?php echo $row['ten_hang_sua']?>&dia_chi=<?php echo $row['dia_chi']?>&dien_thoai=<?php echo $row['dien_thoai']?>&email=<?php echo $row['email']?>">Cập nhật</a></td>
                 <td>
                     <a href="xoa.php?khoa=<?php echo $row['id']; ?>" onclick = "confirm('Bạn có chắc chắn muốn xóa hay không')">Xóa</a> 
                 </td>
