@@ -78,8 +78,8 @@
                 <td><?php echo $row['image'] ?></td>
                 <td><a href="../cap-nhat-thong-tin/cap-nhat-sua.php?id=<?php echo $row['id'];?>&ten=<?php echo $row['ten'];?>&nhanhang=<?php echo $row['nhanhang'];?>&giaban=<?php echo $row['giaban']?>&image=<?php echo $row['image']?>">Cập nhật</a> </td>
 				<td>
-					<a href="action=xoa?khoa=<?php echo $row['id']; ?>" 
-                    onclick = "confirm('Bạn có chắc chắn muốn xóa hay không')">Xóa</a> 
+                    <a href="thong-tin-sua.php?action=xoa&id=<?php echo $row['id']; ?>" 
+                    onclick="return confirm('Bạn có chắc chắn muốn xóa hay không?')">Xóa</a>
 				</td>
             </tr>
             <?php } ?>
