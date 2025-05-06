@@ -12,6 +12,18 @@ body {
     font-family: Arial, sans-serif;
     background: #406E86;
   }
+  .main-them-sua{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+  }
+  .them-sua{
+    font-size: 50px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+  }
   .product-box {
     border-radius: 10px;
     background-color: #9ABBCB;

@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Thông Tin Sản Phẩm</title>
-  <link rel="stylesheet" href="../css-folder/them-thanh-cong.css">
+  <link rel="stylesheet" href="../../css-folder/them-thanh-cong.css">
 </head>
 <body>
   
   <div class="container">
+    <div class="main-them-sua">
     <div class="them-sua">Thêm sữa thành công !</div>
     <div class="product-box">
       <a href="../php/batdau.php" class="close-button">×</a>
@@ -35,6 +36,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </body>
 </html>
