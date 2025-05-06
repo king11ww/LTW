@@ -192,7 +192,7 @@
   margin-top: 24px;
 }
 .save {
-  
+
   background: #007bff;
   color: white;
   border: none;
@@ -210,7 +210,24 @@
   transform: scale(0.95);
   background: #0062cc;
 }
+.buttons {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  flex: 1;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.buttons:hover {
+  background: #0069d9;
+}
 
+.buttons:active {
+  transform: scale(0.95);
+  background: #0062cc;
+}
 
 .footer {
   width: 100%;

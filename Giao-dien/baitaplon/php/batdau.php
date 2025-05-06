@@ -142,14 +142,8 @@
                                     <span><?php echo $row["giaban"] ?>vnđ</span>
                                     <div class="mota">
                                         <a href="thongtin.php">
-                                        <i>Mô tả
-                                            </a>
-                                            <div class="cuasomota">
-                                                <p>
-                                                    <span>ten nha san xuat: <?php echo $row["nhanhang"] ?></span>
-                                                </p>
-                                            </div>
-                                        </i>
+                                            <i>Mô tả</i>
+                                        </a>
                                     </div>
                                 </p>
                             </div>
