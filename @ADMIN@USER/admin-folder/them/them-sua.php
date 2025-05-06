@@ -80,30 +80,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <h1 style="text-align: center;">Thêm Sữa</h1>
     <form action="" method="post">
-        <label for="ma-sua">Mã Sữa:</label>
-        <input type="text" id="ma-sua" name="ma_sua" placeholder="Nhập mã sữa" required>
-
         <label for="ten-sua">Tên Sữa:</label>
         <input type="text" id="ten-sua" name="ten_sua" placeholder="Nhập tên sữa" required>
 
-        <label for="hang-sua">Hãng Sữa:</label>
-        <select id="hang-sua" name="hang_sua" required>
-            <option value="">-- Chọn hãng sữa --</option>
+        <label for="nhan-hang">Nhãn hàng:</label>
+        <select id="nhan-hang" name="nhan-hang" required>
+            <option value="">-- Chọn hãng hàng --</option>
             <option value="Vinamilk">Vinamilk</option>
             <option value="TH True Milk">TH True Milk</option>
             <option value="Nutifood">Nutifood</option>
         </select>
-
-        <label for="loai-sua">Loại Sữa:</label>
-        <select id="loai-sua" name="loai_sua" required>
-            <option value="">-- Chọn loại sữa --</option>
-            <option value="Sữa bột">Sữa bột</option>
-            <option value="Sữa tươi">Sữa tươi</option>
-            <option value="Sữa đặc">Sữa đặc</option>
-        </select>
-
-        <label for="trong-luong">Trọng Lượng (gram):</label>
-        <input type="number" id="trong-luong" name="trong_luong" placeholder="Nhập trọng lượng" required>
 
         <label for="don-gia">Đơn Giá (VNĐ):</label>
         <input type="number" id="don-gia" name="don_gia" placeholder="Nhập đơn giá" required>
@@ -115,6 +101,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="file" id="hinh-anh" name="hinh_anh" accept="image/*" required>
 
         <button type="submit">Thêm Sữa</button>
+    
+        <button type="button"><a href="../thong-tin/thong-tin-sua.php" style="text-decoration:none; color: white; width:100%;">Hủy</a></button>
     </form>
 </body>
 </html>

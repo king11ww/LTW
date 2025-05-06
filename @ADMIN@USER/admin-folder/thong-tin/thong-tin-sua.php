@@ -84,13 +84,9 @@
             </tr>
             <?php } ?>
         </table>
-<<<<<<< HEAD
         <div class="add">
             <a href="../them/them-sua.php" class="btn-add">Thêm</a>
         </div>
-=======
-        <button><a href="../them/them-sua.php">Thêm</a></button>
->>>>>>> a3672dc1c6c0024cbc4baf7370fc1f21476864d4
     </div>
 </body>
 </html>

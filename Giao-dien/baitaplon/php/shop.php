@@ -6,6 +6,19 @@
         header("Location: batdau.php");
         exit();
     }
+    require_once("../../../ket-noi-co-so-du-lieu.php");
+
+    if(isset($_GET['xac-nhan'])) {
+        $ten_sp = $_GET['ten_san_pham'];
+        $ten_dn = $_GET['ten_dang_nhap'];
+        $so_luong = $_GET['so_luong'];
+        $gia_sp = $_GET['gia_san_pham'];
+        // Kiểm tra số lượng hợp lệ
+        $sql_update = "UPDATE dohang SET soluong = $so_luong , gia =  $so_luong * $gia_sp WHERE ten_san_pham = '$ten_sp' AND ten_dang_nhap = '$ten_dn'";
+        mysqli_query($conn, $sql_update);
+        header("Location: shop.php");
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,12 +124,27 @@
                                     </div>
                                     <div class="infophoto">
                                         <b><?php echo $row['ten_san_pham'] ?></b>
-                                        <p>Tên nhãn hàngt: <?php echo $row['nhanhang'] ?></p>
+                                        <p>Tên nhãn hàng: <?php echo $row['nhanhang'] ?></p>
                                     </div>
                                     <div class="money">
+                                    <form action="shop.php" method="get">
+                                        <?php 
+                                            require_once("../../../ket-noi-co-so-du-lieu.php");
+                                            $ten_sp = $row['ten_san_pham'];
+                                            $sql_gia_ban = "select * from sanpham where ten = '$ten_sp'";
+                                            $ans = mysqli_query($conn, $sql_gia_ban);
+                                            $hang = mysqli_fetch_assoc($ans);
+                                            $gia_ban = $hang['giaban'];
+                                        ?>
+                                        <input type="hidden" name="ten_san_pham" value="<?php echo $row['ten_san_pham'] ?>">
+                                        <input type="hidden" name="ten_dang_nhap" value="<?php echo $_SESSION['ten_dang_nhap'] ?>">
+                                        <input type="hidden" name="gia_san_pham" value="<?php echo $gia_ban?>">
                                         <p>Giá: <?php echo $row['gia'] ?>vnđ</p>
                                         <label>Số Lượng:</label>
-                                        <input type="number" class="quantity" value="<?php echo $row['soluong'] ?>" min="1">
+                                        <input type="number" name="so_luong" class="quantity" value="<?php echo $row['soluong'] ?>" min="1">
+                                        
+                                        <button type="submit" name="xac-nhan">Thay đổi số lượng</button>
+                                    </form>
                                     </div>
                                 </div>
                             </div>
@@ -138,7 +166,7 @@
                                 <li>Phí vận chuyển sẽ được tính ở trang thanh toán.</li>
                                 <li>Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.</li>
                             </ul>
-                            <a href="../user_produrt/user.html">
+                            <a href="thanhtoan.php?totalmoney=<?php echo $allmoney?>">
                                 <button class="pay">THANH TOÁN</button>
                             </a>
                         </div>
