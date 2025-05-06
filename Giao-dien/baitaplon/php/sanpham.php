@@ -128,7 +128,7 @@
                                     <span><?php echo $row["ten"] ?></span>
                                     <span><?php echo $row["giaban"] ?>vnđ</span>
                                     <div class="mota">
-                                    <a href="thongtin.php">
+                                    <a href="thongtin.php"target="_blank">
                                         <i>Mô tả
                                          </a>
                                             <div class="cuasomota">
