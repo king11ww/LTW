@@ -192,7 +192,7 @@
   margin-top: 24px;
 }
 .save {
-  
+
   background: #007bff;
   color: white;
   border: none;
@@ -202,6 +202,7 @@
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
+
 .save:hover {
   background: #0069d9;
 }
@@ -210,8 +211,28 @@
   transform: scale(0.95);
   background: #0062cc;
 }
+.buttons {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  flex: 1;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.buttons:hover {
+  background: #0069d9;
+}
 
+<<<<<<< HEAD
+=======
+.buttons:active {
+  transform: scale(0.95);
+  background: #0062cc;
+}
 
+>>>>>>> 6822bf5655d6aeaf625ce42737bb9ab8a8b004c2
 .footer {
   width: 100%;
   background: #162735;
