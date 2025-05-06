@@ -46,7 +46,7 @@
                 <a href="thong-tin-khach-hang.php">Thông tin khách hàng</a>
             </div>
             <div class="chose">
-                <a href="thong-tin-hang-sua.php">Thông tin hãng sữa</a>
+                <a href="thong-tin-hang-sua.php">Hãng sữa</a>
             </div>
             <div class="chose">
                 <a href="thong-tin-sua.php">Thông tin sữa</a>
@@ -81,7 +81,7 @@
                 <td><?= $row['dia_chi'] ?></td>
                 <td><?= $row['email'] ?></td>
                 <td>
-                    <a href="cap-nhat-thong-tin-khach-hang.php?id=<?= $row['id'] ?>&ho_ten=<?= $row['ho_ten'] ?>&gioi_tinh=<?= $row['gioi_tinh'] ?>&dia_chi=<?= $row['dia_chi']?>&email=<?= $row['email'] ?>">Cập nhật</a> | 
+                    <a href="../cap-nhat-thong-tin/cap-nhat-thong-tin-khach-hang.php?id=<?= $row['id'] ?>&ho_ten=<?= $row['ho_ten'] ?>&gioi_tinh=<?= $row['gioi_tinh'] ?>&dia_chi=<?= $row['dia_chi']?>&email=<?= $row['email'] ?>">Cập nhật</a> | 
                     <a href="?action=xoa&id=<?= $row['id']?>" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">Xóa</a>
                 </td>
             </tr>

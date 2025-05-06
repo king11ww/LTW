@@ -41,7 +41,7 @@
                 <a href="thong-tin-khach-hang.php">Thông tin khách hàng</a>
             </div>
             <div class="chose">
-                <a href="thong-tin-hang-sua.php">Thông tin hãng sữa</a>
+                <a href="thong-tin-hang-sua.php">Hãng sữa</a>
             </div>
             <div class="chose">
                 <a href="thong-tin-sua.php">Thông tin sữa</a>
@@ -67,7 +67,7 @@
             </tr>
             <?php
             require_once('../../../ket-noi-co-so-du-lieu.php');
-            $sql = "select * from dohang where xacnhan = 1";
+            $sql = "select * from dohang where xacnhan = 0";
             $result = mysqli_query($conn, $sql);
             while ($row = mysqli_fetch_array($result)) {
             ?>
@@ -78,6 +78,7 @@
                 <td><?php echo $row['soluong'] ?></td>
                 <td><?php echo $row['ten_san_pham'] ?></td>
                 <td><?php echo $row['gia'] ?></td>
+                <td><?php echo $row['xacnhan'] ?></td>
                 <td><a href="capnhat.php?khoa=<?php echo $row['id']; ?>">Cập nhật</a> </td>
 				<td>
 					<a href="xoa.php?khoa=<?php echo $row['id']; ?>" 
