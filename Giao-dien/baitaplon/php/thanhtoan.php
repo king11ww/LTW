@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
     session_start();
 
@@ -49,4 +50,16 @@
         <a href="batdau.php">Quay lại trang chủ</a>
     </div>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+>>>>>>> 51c1a6f163f2cd4855c5ee8f17d1436d99f2e330
 </html>

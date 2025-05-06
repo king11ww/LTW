@@ -46,7 +46,7 @@
                 <a href="thong-tin-khach-hang.php">Thông tin khách hàng</a>
             </div>
             <div class="chose">
-                <a href="thong-tin-hang-sua.php">Thông tin hãng sữa</a>
+                <a href="thong-tin-hang-sua.php">Hãng sữa</a>
             </div>
             <div class="chose">
                 <a href="thong-tin-sua.php">Thông tin sữa</a>
