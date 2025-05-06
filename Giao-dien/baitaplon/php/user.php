@@ -86,6 +86,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save'])) {
 				<h2><?php echo htmlspecialchars($_SESSION['ten_dang_nhap']); ?></h2>
 				<p><?php echo htmlspecialchars($_SESSION['email']); ?></p>
 			</div>
+            <button>
+                <a href="changepass.php" class="change-password-btn">Đổi mật khẩu</a>
+            </button>
 			<button class="settings-btn">
 				<a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="logout">Đăng xuất</a>
 			</button>
