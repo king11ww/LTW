@@ -87,10 +87,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save'])) {
 				<p><?php echo htmlspecialchars($_SESSION['email']); ?></p>
 			</div>
             <button>
-                <a href="changepass.php" class="change-password-btn">Đổi mật khẩu</a>
+			<a href="changepass.php" class="change-password-btn save">Đổi mật khẩu</a>
             </button>
 			<button class="settings-btn">
-				<a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="logout">Đăng xuất</a>
+			<a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="logout save">Đăng xuất</a>
 			</button>
 		</div>
 
@@ -109,8 +109,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save'])) {
 			<input type="text" name="dia_chi" value="<?php echo htmlspecialchars($_SESSION['dia_chi']); ?>" disabled>
 
 			<div class="button-group">
-                <button class="change" type="button" onclick="enableEditing()">change</button>
-				<button type="submit" name="save" class="save">Save Changes</button>
+				<button id="changesave" class="save"="button" onclick="enableEditing()">Change</button>
+				<button id="savechanges" type="submit" name="save" class="save">Save Changes</button>
 			</div>
 		</form>
 	</div>
@@ -155,6 +155,9 @@ function enableEditing() {
 	const inputs = form.querySelectorAll("input[type='text'], input[type='email']");
 	inputs.forEach(input => input.disabled = false);
 }
+	Document.getElementById("change").addEventListener("click", function() {
+		document.getElementById("savechanges").disabled = false;
+	});
 </script>
 </body>
 </html>

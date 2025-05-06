@@ -23,8 +23,6 @@
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
   z-index: 1;
   padding-left: 200px;
-  
- 
 }
 
 .header div {
@@ -44,16 +42,15 @@
   text-decoration: none;
 }
 
-/* --- Menu trong Header --- */
 .header .menu {
   flex: 1;
-  padding: 25px ;
+  padding: 25px;
   font-size: 25px;
   text-align: center;
 }
 
 .header .menu .chose {
-  margin:  10px;
+  margin: 10px;
   cursor: pointer;
   transition: 0.1s;
 }
@@ -65,9 +62,9 @@
 
 .header .shopcart {
   position: absolute;
-  right: 100px;  /* Đặt giỏ hàng cách mép phải 30px */
-  top: 50%;     /* Đặt giỏ hàng ở giữa chiều dọc */
-  transform: translateY(-50%); /* Canh giữa chiều dọc */
+  right: 100px;
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 20px;
   text-align: center;
 }
@@ -88,7 +85,7 @@
 }
 
 .header .shopcart a .shopcart_value {
-  position: absolute; /* Đặt vị trí tuyệt đối */
+  position: absolute;
   width: 20px;
   height: 20px;
   font-size: 15px;
@@ -96,18 +93,19 @@
   background-color: red;
   border-radius: 50%;
   display: inline-block;
-  text-align: center; /* Căn giữa chữ trong vòng tròn */
-  line-height: 20px; /* Căn giữa theo chiều dọc */
+  text-align: center;
+  line-height: 20px;
 }
 
 .header .user {
   position: absolute;
-  right: 170px;  /* Đặt người dùng cách mép phải 30px, cách giỏ hàng 100px */
-  top: 50%;     /* Đặt người dùng ở giữa chiều dọc */
-  transform: translateY(-50%); /* Canh giữa chiều dọc */
+  right: 170px;
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 20px;
   text-align: center;
 }
+
 .header .user a {
   background: #fff;
   display: inline-block;
@@ -161,32 +159,6 @@
   font-size: 14px;
 }
 
-.settings-btn {
-  background: #f0f0f0;
-  border: none;
-  border-radius: 8px;
-  padding: 6px 8px;
-  cursor: pointer;
-}
-.change-password-btn {
-	display: inline-block;
-	padding: 8px 16px;
-	background-color: #007bff;
-	color: #fff;
-	text-decoration: none;
-	border-radius: 4px;
-	transition: background-color 0.3s;
-}
-
-.change-password-btn:hover {
-	background-color: #0056b3;
-}
-
-.settings-btn:hover {
-  background: #406E86;
-  color: white;
-}
-
 .profile-form {
   display: flex;
   flex-direction: column;
@@ -219,9 +191,8 @@
   gap: 12px;
   margin-top: 24px;
 }
-
 .save {
-  width: 100%;
+  
   background: #007bff;
   color: white;
   border: none;
@@ -231,7 +202,6 @@
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
-
 .save:hover {
   background: #0069d9;
 }
@@ -240,6 +210,7 @@
   transform: scale(0.95);
   background: #0062cc;
 }
+
 
 .footer {
   width: 100%;
