@@ -208,6 +208,7 @@
 }
 
 .save {
+  width: 100%;
   background: #007bff;
   color: white;
   border: none;
@@ -225,24 +226,6 @@
 .save:active {
   transform: scale(0.95);
   background: #0062cc;
-}
-
-.cancel {
-  background: #f3f4f6;
-  color: black;
-  border: 1px solid #ddd;
-  padding: 10px;
-  flex: 1;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.cancel:hover {
-  background: #e5e7eb;
-}
-
-.cancel:active {
-  transform: scale(0.95);
 }
 
 .footer {
