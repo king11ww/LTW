@@ -8,6 +8,21 @@
         header("Location: ../../../Giao-dien/baitaplon/php/batdau.php");
         exit();
     }
+
+    if(isset($_GET['action']) && $_GET['action'] == 'xoa')
+    {
+        $id = $_GET['khoa'];
+        $sql = "DELETE FROM hangsua WHERE id = $id";
+        $result = mysqli_query($conn, $sql);
+        if ($result) {
+            echo "<script>alert('Xóa thành công!');</script>";
+        } else {
+            echo "<script>alert('Xóa không thành công!');</script>";
+        }
+        header("Location: thong-tin-hang-sua.php");
+        exit(); 
+    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +89,7 @@
                 <td><?php echo $row['email']?></td>
                 <td><a href="../cap-nhat-thong-tin/cap-nhat-thong-tin-hang-sua.php?id=<?php echo $row['id'];?>&ten_hang_sua=<?php echo $row['ten_hang_sua']?>&dia_chi=<?php echo $row['dia_chi']?>&dien_thoai=<?php echo $row['dien_thoai']?>&email=<?php echo $row['email']?>">Cập nhật</a></td>
                 <td>
-                    <a href="xoa.php?khoa=<?php echo $row['id']; ?>" onclick = "confirm('Bạn có chắc chắn muốn xóa hay không')">Xóa</a> 
+                    <a href="thong-tin-hang-sua.php?action=xoa&khoa=<?php echo $row['id']; ?>" onclick = "confirm('Bạn có chắc chắn muốn xóa hay không')">Xóa</a> 
                 </td>
             </tr>
             <?php }?>
