@@ -202,6 +202,7 @@
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
+
 .save:hover {
   background: #0069d9;
 }
@@ -210,7 +211,6 @@
   transform: scale(0.95);
   background: #0062cc;
 }
-
 
 .footer {
   width: 100%;

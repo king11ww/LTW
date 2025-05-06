@@ -109,8 +109,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save'])) {
 			<input type="text" name="dia_chi" value="<?php echo htmlspecialchars($_SESSION['dia_chi']); ?>" disabled>
 
 			<div class="button-group">
-				<button id="changesave" class="save"="button" onclick="enableEditing()">Change</button>
-				<button id="savechanges" type="submit" name="save" class="save">Save Changes</button>
+				<button class="change save" type="button" onclick="enableEditing()">Change</button>
+				<button type="submit" name="save" class="save">Save Changes</button>
 			</div>
 		</form>
 	</div>
@@ -155,9 +155,6 @@ function enableEditing() {
 	const inputs = form.querySelectorAll("input[type='text'], input[type='email']");
 	inputs.forEach(input => input.disabled = false);
 }
-	Document.getElementById("change").addEventListener("click", function() {
-		document.getElementById("savechanges").disabled = false;
-	});
 </script>
 </body>
 </html>
