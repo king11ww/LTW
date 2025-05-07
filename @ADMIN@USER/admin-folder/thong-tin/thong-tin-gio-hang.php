@@ -8,7 +8,7 @@
 
     if (isset($_GET['action']) && $_GET['action'] == 'xoa') {
         require_once('../../../ket-noi-co-so-du-lieu.php');
-        $id = $_GET['khoa'];
+        $id = $_GET['id'];
         $sql_delete = "DELETE FROM dohang WHERE id = $id";
         mysqli_query($conn, $sql_delete);
         header("Location: thong-tin-gio-hang.php");
@@ -80,11 +80,7 @@
                 <td><?php echo $row['gia'] ?></td>
                 <td><?php echo $row['xacnhan'] ?></td>
 				<td>
-<<<<<<< HEAD
 					<a href="?action=xoa&id=<?php echo $row['id']; ?>" 
-=======
-					<a href="thong-tin-gio-hang.php?action=xoa&khoa=<?php echo $row['id']; ?>" 
->>>>>>> 262eb53e1030c2f882ea33d44245bb54abcaafcd
                     onclick = "confirm('Bạn có chắc chắn muốn xóa hay không')">Xóa</a> 
 				</td>
             </tr>

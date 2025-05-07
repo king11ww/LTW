@@ -1,23 +1,11 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-<<<<<<< HEAD
     require_once('../../../ket-noi-co-so-du-lieu.php');
     
-=======
-
-    require_once('../../../ket-noi-co-so-du-lieu.php');
-    
-
->>>>>>> 262eb53e1030c2f882ea33d44245bb54abcaafcd
     $ten_hang_sua = $_POST['ten_hang_sua'];
     $dia_chi = $_POST['dia_chi'];
     $dien_thoai = $_POST['dien_thoai'];
     $email = $_POST['email'];
-<<<<<<< HEAD
-=======
-    
-
->>>>>>> 262eb53e1030c2f882ea33d44245bb54abcaafcd
     $sql = "INSERT INTO hangsua (ten_hang_sua, dia_chi, dien_thoai, email) 
             VALUES ('$ten_hang_sua', '$dia_chi', '$dien_thoai', '$email')";
     $check_sql = "SELECT * FROM hangsua WHERE ten_hang_sua = '$ten_hang_sua'";

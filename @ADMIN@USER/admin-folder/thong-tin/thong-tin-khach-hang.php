@@ -8,11 +8,8 @@
         header("Location: ../../../Giao-dien/baitaplon/php/batdau.php");
         exit();
     }
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 262eb53e1030c2f882ea33d44245bb54abcaafcd
     if (isset($_GET['action']) && $_GET['action'] == 'xoa') {
         require_once('../../../ket-noi-co-so-du-lieu.php');
         $id = $_GET['id'];
