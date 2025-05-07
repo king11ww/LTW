@@ -89,7 +89,7 @@
                     <i class="fa-solid fa-cart-shopping"></i>
                     <?php
                         require_once("../../../ket-noi-co-so-du-lieu.php");
-                        $sql_so_luong_don_hang = "select * from dohang where ten_dang_nhap = '$_SESSION[ten_dang_nhap]'";  
+                        $sql_so_luong_don_hang = "select * from dohang where ten_dang_nhap = '$_SESSION[ten_dang_nhap]' and xacnhan = 'Chưa xác nhận'";  
                         $so_luong_don_hang =  mysqli_num_rows(mysqli_query($conn, $sql_so_luong_don_hang));
                     ?>
                     <?php

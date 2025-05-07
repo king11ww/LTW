@@ -47,14 +47,7 @@
         </div>
         <?php
             if($_SERVER["REQUEST_METHOD"] == "POST")
-            {
-                require_once("../../ket-noi-co-so-du-lieu.php");
-                $get_user = "SELECT * FROM khachhang WHERE ten_dang_nhap = '$tenDangNhap'";
-                if ($conn->query($get_user)->num_rows > 0) {
-                    echo "<script>alert('Tên đăng nhập đã tồn tại!');</script>";
-                    $conn->close();
-                    exit();
-                }     
+            {   
                 $tenDangNhap = $_POST["ten-dang-nhap"];
                 $hoVaTen = $_POST["ho-va-ten"];
                 $gioiTinh = $_POST["gioi-tinh"];
@@ -63,7 +56,15 @@
                 $email = $_POST["email"];
                 $matKhau = $_POST["mat-khau"];
                 $nhapLaiMatKhau = $_POST["nhap-lai-mat-khau"];
-
+                require_once("../../ket-noi-co-so-du-lieu.php");
+                $get_user = "SELECT * FROM khachhang WHERE ten_dang_nhap = '$tenDangNhap'";
+                if ($conn->query($get_user)->num_rows > 0) {
+                    echo "<script>alert('Tên đăng nhập đã tồn tại!');</script>";
+                    $conn->close();
+                    exit();
+                }     
+                
+                $sql = "select *";
                 if($matKhau == $nhapLaiMatKhau)
                 {
                     require_once("../../ket-noi-co-so-du-lieu.php");
@@ -88,13 +89,6 @@
                 else
                 {
                     echo "<script>alert('Mật khẩu không khớp!');</script>";
-                }
-                if ($conn->query($sql) === TRUE) {
-                    echo "<script>alert('Đăng kí thành công! Vui lòng đăng nhập lại heheh');</script>";
-                    header("Location: dang-nhap.php");
-                    exit();
-                } else {
-                    echo "<script>alert('Lỗi: " . $sql . "<br>" . $conn->error . "');</script>"; 
                 }
                 $conn->close();
                 
