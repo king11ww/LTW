@@ -1,3 +1,17 @@
+<?php
+  if(isset($_GET['id'])):
+    require_once('../../../ket-noi-co-so-du-lieu.php');
+    $id = $_GET['id'];
+    $sql = "select * from sanpham where id = $id";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $_GET['ten'] = $row['ten'];
+    $_GET['nhanhang'] = $row['nhanhang'];
+    $_GET['thanhphan'] = $row['thanhphan'];
+    $_GET['loinhuan'] = $row['loinhuan'];
+    $_GET['image'] = $row['image'];
+  endif;
+?>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -6,31 +20,24 @@
   <link rel="stylesheet" href="../css/thongtin.css">
 </head>
 <body>
-  
   <div class="container">
     <div class="product-box">
-      <a href="../php/batdau.php" class="close-button">×</a>
       <div class="product-image">
-        <img src="https://concung.com/2024/08/51728-112604-large_mobile/sua-growplus-do-900g-tu-1-tuoi.png" alt="GrowPLUS+">
+        <img src="../img/<?php echo $_GET['image']?>" alt="ảnh">
       </div>
-
       <div class="product-info">
-        <h2 class="product-title">Sữa Bột Nutifood GrowPLUS+</h2>
+        <h2 class="product-title"><?php echo $_GET['ten']?></h2>
 
         <div class="nutrition">
-          <p>Nhà sản xuất : ViNaMILK</p>
+          <p>Nhà sản xuất : <?php echo $_GET['nhanhang']?></p>
           <div class="section-title">Thành phần dinh dưỡng:</div>
           
-          <p>Sữa non, DHA, FOS, Canxi, Vitamin D3, Kẽm, Lysine...</p>
+          <p><?php echo $_GET['thanhphan']?></p>
         </div>
 
         <div class="benefits">
           <div class="section-title">Lợi ích sản phẩm:</div>
-          <ul>
-            <li>Hỗ trợ tăng cân và chiều cao cho trẻ suy dinh dưỡng</li>
-            <li>Tăng cường sức đề kháng và phát triển trí não</li>
-            <li>Giúp tiêu hóa tốt và hấp thu dưỡng chất hiệu quả</li>
-          </ul>
+          <?php echo $_GET['loinhuan']?>
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@
             $sql_shop = "select * from dohang where ten_dang_nhap = '$ten_dang_nhap' and ten_san_pham = '$ten_san_pham'";
             $kq_shop = mysqli_query($conn, $sql_shop);
             if(mysqli_num_rows($kq_shop) == 0):
-                $sql_insert = "INSERT INTO dohang(ten_dang_nhap,ho_ten, soluong, ten_san_pham, gia, xacnhan) VALUES ('$ten_dang_nhap','$ho_ten', '1' ,'$ten_san_pham', '$gia_ban', 'Chưa xác nhận')";
+                $sql_insert = "INSERT INTO dohang(ten_dang_nhap,ho_ten, soluong, ten_san_pham, gia) VALUES ('$ten_dang_nhap','$ho_ten', '1' ,'$ten_san_pham', '$gia_ban')";
                 $kq_insert = mysqli_query($conn, $sql_insert);
             else:
                 $sql_update = "update dohang set soluong = soluong + 1 where ten_dang_nhap = '$ten_dang_nhap' and ten_san_pham = '$ten_san_pham'";
@@ -89,7 +89,7 @@
                     <i class="fa-solid fa-cart-shopping"></i>
                     <?php
                         require_once("../../../ket-noi-co-so-du-lieu.php");
-                        $sql_so_luong_don_hang = "select * from dohang where ten_dang_nhap = '$_SESSION[ten_dang_nhap]'";  
+                        $sql_so_luong_don_hang = "select * from dohang where ten_dang_nhap = '$_SESSION[ten_dang_nhap]' and xacnhan = 'Chưa xác nhận'";  
                         $so_luong_don_hang =  mysqli_num_rows(mysqli_query($conn, $sql_so_luong_don_hang));
                     ?>
                     <?php
@@ -141,7 +141,7 @@
                                     <span><?php echo $row["ten"] ?></span>
                                     <span><?php echo $row["giaban"] ?>vnđ</span>
                                     <div class="mota">
-                                        <a href="thongtin.php">
+                                        <a href="thongtin.php?id=<?php echo $row['id']?>"  target="_blank">  
                                             <i>Mô tả</i>
                                         </a>
                                     </div>

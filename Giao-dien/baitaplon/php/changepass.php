@@ -26,7 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save'])) {
 	} else {
 		$update = mysqli_query($conn, "UPDATE khachhang SET mat_khau='$mat_khau_moi' WHERE id='$id'");
 		if ($update) {
-			$thong_bao = "Đổi mật khẩu thành công.";
+			$_SESSION['doi-mat-khau-thanh-cong'] = "Đổi mật khẩu thành công.";
+			header("Location: user.php");
+			exit();
 		} else {
 			$thong_bao = "Đổi mật khẩu thất bại.";
 		}

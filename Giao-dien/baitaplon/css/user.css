@@ -225,11 +225,6 @@
   background: #0069d9;
 }
 
-.buttons:active {
-  transform: scale(0.95);
-  background: #0062cc;
-}
-
 .footer {
   width: 100%;
   background: #162735;

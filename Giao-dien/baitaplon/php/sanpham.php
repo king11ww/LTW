@@ -1,3 +1,4 @@
+
 <?php
     session_start();
     if(isset($_GET['action']) && $_GET['action'] == 'logout')
@@ -20,7 +21,7 @@
             $sql_shop = "select * from dohang where ten_dang_nhap = '$ten_dang_nhap' and ten_san_pham = '$ten_san_pham'";
             $kq_shop = mysqli_query($conn, $sql_shop);
             if(mysqli_num_rows($kq_shop) == 0):
-                $sql_insert = "INSERT INTO dohang(ten_dang_nhap,ho_ten, soluong, ten_san_pham, gia, xacnhan) VALUES ('$ten_dang_nhap','$ho_ten', '1' ,'$ten_san_pham', '$gia_ban', '0')";
+                $sql_insert = "INSERT INTO dohang(ten_dang_nhap,ho_ten, soluong, ten_san_pham, gia) VALUES ('$ten_dang_nhap','$ho_ten', '1' ,'$ten_san_pham', '$gia_ban')";
                 $kq_insert = mysqli_query($conn, $sql_insert);
             else:
                 $sql_update = "update dohang set soluong = soluong + 1 where ten_dang_nhap = '$ten_dang_nhap' and ten_san_pham = '$ten_san_pham'";
@@ -116,7 +117,6 @@
                     </p>
                 </div>
                 <div class="products_maincontent">
-                    <input type="search" placeholder="Tìm kiếm sản phẩm...">
                     <div class="products_product">
                         <?php
                             while($row = mysqli_fetch_assoc($kq)){
@@ -128,15 +128,9 @@
                                     <span><?php echo $row["ten"] ?></span>
                                     <span><?php echo $row["giaban"] ?>vnđ</span>
                                     <div class="mota">
-                                    <a href="thongtin.php">
-                                        <i>Mô tả
-                                         </a>
-                                            <div class="cuasomota">
-                                                <p>
-                                                    <span>ten nha san xuat: <?php echo $row["nhanhang"] ?></span>
-                                                </p>
-                                            </div>
-                                        </i>
+                                    <a href="thongtin.php?id=<?php echo $row['id']?>"  target="_blank">
+                                        <i>Mô tả</i>
+                                    </a>
                                     </div>
                                 </p>
                             </div>

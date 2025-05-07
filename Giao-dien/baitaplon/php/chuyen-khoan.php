@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    require_once('../../../ket-noi-co-so-du-lieu.php');
+    if (!isset($_SESSION['ten_dang_nhap'])) {
+        header('Location: batdau.php'); // Chuyển hướng về trang bắt đầu nếu chưa đăng nhập
+        exit();
+    }
+    $sql = "update dohang set xacnhan = 'Đã xác nhận' where ten_dang_nhap = '$_SESSION[ten_dang_nhap]' and xacnhan = 'Chưa xác nhận'";
+    mysqli_query($conn, $sql);
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +35,12 @@
                     <img alt="paymentcode" class="image-qr-code" src="https://api.vietqr.io/970416/42617657/50000/HD1990/vietqr_net_2.jpg">
                 </div>
             </div>
+        </div>
+        <div>
+            <h2>Thông tin thanh toán</h2>
+            <p>Tên tài khoản: <strong>Hồ Nguyên Khởi</strong></p>
+            <p>Số tiền: <strong><?php echo $_GET['totalmoney']?> Vnd</strong></p>
+            <p>Nội dung: <strong>Thanh toán đơn hàng #12345</strong></p>
         </div>
     </div>
 </body>

@@ -12,18 +12,6 @@
     }
     require_once("../../../ket-noi-co-so-du-lieu.php");
 
-    if(isset($_POST['thay-doi-so-luong'])) {
-        $ten_sp = $_POST['ten_san_pham'];
-        $ten_dn = $_POST['ten_dang_nhap'];
-        $so_luong = $_POST['so_luong'];
-        $gia_sp = $_POST['gia_san_pham'];
-        // Kiểm tra số lượng hợp lệ
-        $sql_update = "UPDATE dohang SET soluong = $so_luong , gia =  $so_luong * $gia_sp WHERE ten_san_pham = '$ten_sp' AND ten_dang_nhap = '$ten_dn'";
-        mysqli_query($conn, $sql_update);
-        header("Location: shop.php");
-        exit();
-    }
-
     if(isset($_POST['huy-don-hang'])) {
         $ten_sp = $_POST['ten_san_pham'];
         $ten_dn = $_POST['ten_dang_nhap'];
@@ -69,7 +57,10 @@
                     <a href="sanpham.php">Sản Phẩm</a>
                 </div>
                 <div class="chose">
-                    <a href="llichsudathang.php">lịch sử đăt hàng</a>
+                    <a href="batdau.php">Thông tin</a>
+                </div>
+                <div class="chose">
+                    <a href="batdau.php">Liên hệ</a>
                 </div>
             </div>
             <?php if(isset($_SESSION['ten_dang_nhap'])): ?>
@@ -92,7 +83,7 @@
                     <?php
                         require_once("../../../ket-noi-co-so-du-lieu.php");
                         $ten_dang_nhap = $_SESSION['ten_dang_nhap'];
-                        $sql_so_luong_don_hang = "select * from dohang where ten_dang_nhap = '$ten_dang_nhap' and xacnhan = 'Chưa xác nhận'";  
+                        $sql_so_luong_don_hang = "select * from dohang where ten_dang_nhap = '$ten_dang_nhap'";  
                         $so_luong_don_hang =  mysqli_num_rows(mysqli_query($conn, $sql_so_luong_don_hang));
                     ?>
                     <?php
@@ -114,7 +105,7 @@
         <div class="header1">
             <div class="shopcontent">
                 <div class="yourshop">
-                    <b>Giỏ hàng của bạn</b>
+                    <b>Lịch sử đặt hàng</b>
                 </div>
 
                 <div class="infoshop">
@@ -123,7 +114,7 @@
                     <div class="product-summary">
                                 <?php
                                 require_once("../../../ket-noi-co-so-du-lieu.php");
-                                $sql = "select * from dohang as dh inner join sanpham as sp on sp.ten = dh.ten_san_pham where ten_dang_nhap = '$_SESSION[ten_dang_nhap]' and xacnhan = 'chưa xác nhận'";  
+                                $sql = "select * from dohang as dh inner join sanpham as sp on sp.ten = dh.ten_san_pham where ten_dang_nhap = '$_SESSION[ten_dang_nhap]' and xacnhan = 'đã xác nhận'";  
                                 $result = mysqli_query($conn, $sql);
                                 $allmoney = 0;
                                 if(mysqli_num_rows($result) < 1):
@@ -160,10 +151,9 @@
                                         <input type="hidden" name="gia_san_pham" value="<?php echo $gia_ban?>">
                                         <p>Giá: <?php echo $row['gia'] ?>vnđ</p>
                                         <label>Số Lượng:</label>
-                                        <input type="number" name="so_luong" class="quantity" value="<?php echo $row['soluong'] ?>" min="1" max ="20">
+                                        <input type="number" name="so_luong" class="quantity" value="<?php echo $row['soluong'] ?>" min="1" max ="20" disabled>
                                         
-                                        <button type="submit" name="thay-doi-so-luong">Thay đổi số lượng</button>
-                                        <button type="submit" name="huy-don-hang" onclick="return confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?');">Hủy đơn hàng</button>
+                                        <button type="submit" name="huy-don-hang" onclick="return confirm('Bạn có chắc chắn muốn hủy đơn đặt hàng này không?');">Hủy đơn đặt hàng</button>
                                     </form>
                                     </div>
                                 </div>
@@ -173,29 +163,6 @@
                                 }    
                                 endif;
                             ?>
-                        </div>
-                        <?php 
-                            if($allmoney > 0):
-                        ?>
-                        <div class="howmany">
-                            <b class="infomany">Thông tin đơn hàng</b>
-                            <div class="summoney">
-                                <b>Tổng tiền:</b> <span class="many"><?php echo $allmoney ?> ₫</span>
-                            </div>
-                            <ul class="runmoney">
-                                <li>Phí vận chuyển sẽ được tính ở trang thanh toán.</li>
-                                <li>Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.</li>
-                            </ul>
-                            <a href="thanhtoan.php?totalmoney=<?php echo $allmoney?>">
-                                <button class="pay">THANH TOÁN</button>
-                            </a>
-                        </div>
-                        <?php endif; ?>
-                    </div>
-                    <div class="noteoder">
-                        <b>Ghi chú cho đơn hàng</b>
-                        <div class="note">
-                            <input type="text" placeholder="Ghi chú cho đơn hàng">
                         </div>
                     </div>
                 </div>

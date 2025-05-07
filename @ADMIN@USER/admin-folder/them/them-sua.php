@@ -9,6 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $don_gia = $_POST['don_gia'];
     // $mo_ta = $_POST['mo_ta'];
     $hinh_anh = $_FILES['hinh_anh']['name'];
+    $thanh_phan = $_POST['thanh-phan'];
+    $loi_ich = $_POST['loi-ich'];
 
     // Xử lý upload hình ảnh
     $target_dir = "../../../Giao-dien/baitaplon/img/"; // Thư mục lưu ảnh
@@ -17,12 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Kiểm tra và di chuyển file ảnh
     if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
         // Thêm dữ liệu vào bảng
-        $sql = "INSERT INTO sanpham (ten, nhanhang, giaban, `image`) 
-                VALUES ('$ten_sua', '$nhan_hang', '$don_gia', '$hinh_anh')";
+        $sql = "INSERT INTO sanpham (ten, nhanhang, giaban, `image`, thanhphan, loinhuan) 
+                VALUES ('$ten_sua', '$nhan_hang', '$don_gia', '$hinh_anh', '$thanh_phan', '$loi_ich')";
 
         if ($conn->query($sql) === TRUE) {
             // Chuyển hướng về trang admin
-            header("Location: them-sua-thanh-cong.php?ten_sua=$ten_sua&nhan_hang=$nhan_hang&don_gia=$don_gia&hinh_anh=$hinh_anh");
+            header("Location: them-thanh-cong.php?ten_sua=$ten_sua&nhan_hang=$nhan_hang&don_gia=$don_gia&hinh_anh=$hinh_anh&thanh_phan=$thanh_phan&loi_ich=$loi_ich");
             exit();
         } else {
             echo "Lỗi: " . $sql . "<br>" . $conn->error;
@@ -102,6 +104,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <label for="hinh-anh">Hình Ảnh:</label>
         <input type="file" id="hinh-anh" name="hinh_anh" accept="image/*" required>
+        <label for="thanh-phan">thành phần:</label>
+        <input type="text" id="thanh-phan" name="thanh-phan" placeholder="Nhập thành phần" required>
+        <label for="loi-ich">lợi ích:</label>
+        <input type="text" id="loi-ich" name="loi-ich" placeholder="Nhập lợi ích" required>
 
         <button type="submit">Thêm Sữa</button>
     
