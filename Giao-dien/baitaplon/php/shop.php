@@ -159,7 +159,7 @@
                                         <input type="hidden" name="gia_san_pham" value="<?php echo $gia_ban?>">
                                         <p>Giá: <?php echo $row['gia'] ?>vnđ</p>
                                         <label>Số Lượng:</label>
-                                        <input type="number" name="so_luong" class="quantity" value="<?php echo $row['soluong'] ?>" min="1">
+                                        <input type="number" name="so_luong" class="quantity" value="<?php echo $row['soluong'] ?>" min="1" max ="20">
                                         
                                         <button type="submit" name="thay-doi-so-luong">Thay đổi số lượng</button>
                                         <button type="submit" name="huy-don-hang" onclick="return confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?');">Hủy đơn hàng</button>

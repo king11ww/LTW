@@ -30,7 +30,7 @@
             <a href="">
             <i class="fa-solid fa-glass-water"></i>
             <span>Milk</span>
-            <div class="space"><h6>Admin space</h6></div>  
+            <div class="space"><h6>Admin workspace</h6></div>  
             </a>
         </div>
         <div class="menu">

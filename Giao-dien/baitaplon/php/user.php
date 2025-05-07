@@ -112,8 +112,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save'])) {
 			<input type="text" name="dia_chi" value="<?php echo htmlspecialchars($_SESSION['dia_chi']); ?>" disabled>
 
 			<div class="button-group">
-				<button class="change save" type="button" onclick="enableEditing()">Change</button>
-				<button type="submit" name="save" class="save">Save Changes</button>
+				<button class="buttons" type="button" onclick="enableEditing(this)">Change</button>
+				<button style="display: none;" type="submit" name="save" class="save">Save Changes</button>
 			</div>
 		</form>
 	</div>
