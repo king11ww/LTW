@@ -16,11 +16,12 @@
             header('Location: chuyen-khoan.php?totalmoney='.$_GET['totalmoney']);
             exit();
         } else {
+            $_SESSION['phuong-thuc-thanh-toan'] = "tao-thanh-cong";
             $sql = "update dohang set xacnhan = 'đã xác nhận' where ten_dang_nhap = '$_SESSION[ten_dang_nhap]' and xacnhan = 'Chưa xác nhận'";
             mysqli_query($conn, $sql);
         }
         mysqli_close($conn);
-        header('Location: batdau.php');
+        header('Location: llichsudathang.php');
         exit();
     }
 ?>

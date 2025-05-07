@@ -1,5 +1,9 @@
 <?php
     session_start();
+    if(isset($_SESSION['phuong-thuc-thanh-toan']) && $_SESSION['phuong-thuc-thanh-toan'] == 'tao-thanh-cong') {
+        echo '<script>alert("Tạo đơn hàng thành công")</script>';
+        unset($_SESSION['phuong-thuc-thanh-toan']);
+    }
     if(isset($_GET['action']) && $_GET['action'] == 'logout')
     {
         session_destroy();
@@ -63,12 +67,6 @@
                 </div>
                 <div class="chose">
                     <a href="sanpham.php">Sản Phẩm</a>
-                </div>
-                <div class="chose">
-                    <a href="batdau.php">Thông tin</a>
-                </div>
-                <div class="chose">
-                    <a href="batdau.php">Liên hệ</a>
                 </div>
                 <div class="chose">
                     <a href="llichsudathang.php">lịch sử đăt hàng</a>
@@ -194,7 +192,6 @@
                         </div>
                         <?php endif; ?>
                     </div>
-                    <!-- Ghi chú đơn hàng -->
                     <div class="noteoder">
                         <b>Ghi chú cho đơn hàng</b>
                         <div class="note">
