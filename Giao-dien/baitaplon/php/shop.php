@@ -1,9 +1,6 @@
 <?php
     session_start();
-    if(isset($_SESSION['phuong-thuc-thanh-toan']) && $_SESSION['phuong-thuc-thanh-toan'] == 'tao-thanh-cong') {
-        echo '<script>alert("Tạo đơn hàng thành công")</script>';
-        unset($_SESSION['phuong-thuc-thanh-toan']);
-    }
+
     if(isset($_GET['action']) && $_GET['action'] == 'logout')
     {
         session_destroy();

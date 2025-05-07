@@ -7,22 +7,33 @@
     }
 
     require_once('../../../ket-noi-co-so-du-lieu.php');
+<<<<<<< HEAD
 
 
     $limit = 5; 
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
     $start = ($page - 1) * $limit;
 
+=======
+    $limit = 5; 
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    $start = ($page - 1) * $limit;
+>>>>>>> 262eb53e1030c2f882ea33d44245bb54abcaafcd
     $result_all = mysqli_query($conn, "SELECT COUNT(*) AS total FROM sanpham");
     $row_all = mysqli_fetch_assoc($result_all);
     $total_records = $row_all['total'];
     $total_pages = ceil($total_records / $limit);
+<<<<<<< HEAD
 
 
     $sql = "SELECT * FROM sanpham LIMIT $start, $limit";
     $result = mysqli_query($conn, $sql);
 
 
+=======
+    $sql = "SELECT * FROM sanpham LIMIT $start, $limit";
+    $result = mysqli_query($conn, $sql);
+>>>>>>> 262eb53e1030c2f882ea33d44245bb54abcaafcd
     if (isset($_GET['action']) && $_GET['action'] == 'xoa') {
         $id = $_GET['id'];
         $sql_delete = "DELETE FROM sanpham WHERE id = $id";

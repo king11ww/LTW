@@ -1,5 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+<<<<<<< HEAD
 
     require_once '../../../ket-noi-co-so-du-lieu.php';
 
@@ -14,16 +15,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     $target_dir = "../../../Giao-dien/baitaplon/img/";
+=======
+    require_once '../../../ket-noi-co-so-du-lieu.php';
+    $ten_sua = $_POST['ten_sua'];
+    $nhan_hang = $_POST['nhan-hang'];
+    $don_gia = $_POST['don_gia'];
+    $hinh_anh = $_FILES['hinh_anh']['name'];
+    $thanh_phan = $_POST['thanh-phan'];
+    $loi_ich = $_POST['loi-ich'];
+    $target_dir = "../../../Giao-dien/baitaplon/img/"; 
+>>>>>>> 262eb53e1030c2f882ea33d44245bb54abcaafcd
     $target_file = $target_dir . basename($_FILES["hinh_anh"]["name"]);
 
 
     if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 262eb53e1030c2f882ea33d44245bb54abcaafcd
         $sql = "INSERT INTO sanpham (ten, nhanhang, giaban, `image`, thanhphan, loinhuan) 
                 VALUES ('$ten_sua', '$nhan_hang', '$don_gia', '$hinh_anh', '$thanh_phan', '$loi_ich')";
 
         if ($conn->query($sql) === TRUE) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 262eb53e1030c2f882ea33d44245bb54abcaafcd
             header("Location: them-thanh-cong.php?ten_sua=$ten_sua&nhan_hang=$nhan_hang&don_gia=$don_gia&hinh_anh=$hinh_anh&thanh_phan=$thanh_phan&loi_ich=$loi_ich");
             exit();
         } else {

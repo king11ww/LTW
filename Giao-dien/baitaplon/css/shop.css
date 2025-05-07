@@ -37,8 +37,11 @@ body {
     font-size: 25px;
     color: white;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 262eb53e1030c2f882ea33d44245bb54abcaafcd
 .product-summary {
     display: flex;
     gap: 20px;
@@ -46,7 +49,10 @@ body {
     margin-bottom: 30px;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 262eb53e1030c2f882ea33d44245bb54abcaafcd
 .inshop {
     flex: 3;
     display: flex;
@@ -93,8 +99,11 @@ body {
     font-size: 18px;
     padding-top: 60px;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 262eb53e1030c2f882ea33d44245bb54abcaafcd
 .howmany {
     flex: 1;
     background-color: #BDC1C8;

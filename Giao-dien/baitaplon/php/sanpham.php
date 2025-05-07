@@ -4,6 +4,7 @@
     if(isset($_GET['action']) && $_GET['action'] == 'logout')
     {
         session_destroy();
+        header("Location: batdau.php");
         exit();
     }
     if (isset($_POST['them_gio_hang'])) {
@@ -44,7 +45,11 @@
 </head>
 <body>
     <?php
+<<<<<<< HEAD
 		require_once("../../../ket-noi-co-so-du-lieu.php");
+=======
+		require_once("../../../ket-noi-co-so-du-lieu.php"); 
+>>>>>>> 262eb53e1030c2f882ea33d44245bb54abcaafcd
 		$sql = "select * from sanpham";
 		$kq = mysqli_query($conn, $sql);
 	?>

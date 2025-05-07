@@ -1,11 +1,17 @@
 <?php
     session_start();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 262eb53e1030c2f882ea33d44245bb54abcaafcd
     if (!isset($_SESSION['ten_dang_nhap'])) {
         header('Location: batdau.php'); 
         exit();
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 262eb53e1030c2f882ea33d44245bb54abcaafcd
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         require_once('../../../ket-noi-co-so-du-lieu.php');
         $phuongThucThanhToan = ($_POST['phuong-thuc-thanh-toan'] == 'chuyen-khoan') ? 'Chuyển khoản' : 'Thanh toán khi nhận hàng';

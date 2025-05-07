@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2025 at 08:24 PM
+-- Generation Time: May 07, 2025 at 05:48 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -34,15 +34,8 @@ CREATE TABLE `dohang` (
   `soluong` int(11) NOT NULL DEFAULT 1,
   `ten_san_pham` varchar(255) NOT NULL,
   `gia` int(11) NOT NULL,
-  `xacnhan` int(11) NOT NULL DEFAULT 0
+  `xacnhan` varchar(255) NOT NULL DEFAULT 'chưa xác nhận'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `dohang`
---
-
-INSERT INTO `dohang` (`id`, `ten_dang_nhap`, `ho_ten`, `soluong`, `ten_san_pham`, `gia`, `xacnhan`) VALUES
-(7, 'demo', 'demo', 4, 'Sữa tươi tiệt trùng 100% Vinamilk 180ml (48 hộp/thùng)', 1688324, 0);
 
 -- --------------------------------------------------------
 
@@ -91,9 +84,8 @@ CREATE TABLE `khachhang` (
 --
 
 INSERT INTO `khachhang` (`id`, `ten_dang_nhap`, `ho_ten`, `gioi_tinh`, `dia_chi`, `so_dien_thoai`, `email`, `mat_khau`, `loai_tai_khoan`) VALUES
-(3, 'demo', 'demo', 'Nữ', '123 ABC Street', '0123456789', 'demo@gmail.com', 'demo', 'USER'),
 (4, 'admin', 'admin', '', 'admin', '', 'demo@gmail.com', 'admin', 'ADMIN'),
-(5, 'test', 'test', 'Nữ', 'test', '0123456789', 'demo@gmail.com', 'ahihi', 'USER');
+(8, 'demo', 'demos', 'Nam', '123d', '12343455', 'demo@gmail.comm', '123', 'USER');
 
 -- --------------------------------------------------------
 
@@ -157,6 +149,12 @@ ALTER TABLE `hangsua`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `khachhang`
+--
+ALTER TABLE `khachhang`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sanpham`
 --
 ALTER TABLE `sanpham`
@@ -171,19 +169,25 @@ ALTER TABLE `sanpham`
 -- AUTO_INCREMENT for table `dohang`
 --
 ALTER TABLE `dohang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `hangsua`
 --
 ALTER TABLE `hangsua`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `khachhang`
+--
+ALTER TABLE `khachhang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

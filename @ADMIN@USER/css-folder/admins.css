@@ -54,7 +54,6 @@ a{
     text-decoration: underline;
     color: #105d87;
 }
-/* Thông tin khách hàng */
 #thong-tin-khach-hang {
     padding: 40px 0;
     max-width: 1000px;
@@ -71,8 +70,11 @@ a{
     margin-top: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 262eb53e1030c2f882ea33d44245bb54abcaafcd
 table {
     width: 90%;
     margin: 20px auto;
@@ -89,9 +91,7 @@ table {
     border: none;
     font-size: 14px;
     color: #333;
-    
 }
-
 th {
     background-color: #007BFF;
     color: white;
@@ -100,22 +100,20 @@ th {
     letter-spacing: 0.5px;
     padding: 15px 20px;
 }
-
 tr:hover {
     background-color: #f1f1f1;
     transition: background-color 0.3s;
 }
-
 td a {
     color: #007BFF;
     font-weight: bold;
     transition: color 0.3s, text-decoration 0.3s;
 }
-
 td a:hover {
     color: #0056b3;
     text-decoration: underline;
 }
+<<<<<<< HEAD
 
 
 td a:last-child {
@@ -123,6 +121,11 @@ td a:last-child {
 }
 
 
+=======
+td a:last-child {
+    margin-left: 10px;
+}
+>>>>>>> 262eb53e1030c2f882ea33d44245bb54abcaafcd
 .table th, .table td {
     border-radius: 8px;
 }
