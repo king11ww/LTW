@@ -6,19 +6,18 @@
   <link rel="stylesheet" href="../css/thongtin.css">
 </head>
 <body>
-  
   <div class="container">
     <div class="product-box">
       <a href="../php/batdau.php" class="close-button">×</a>
       <div class="product-image">
-        <img src="https://concung.com/2024/08/51728-112604-large_mobile/sua-growplus-do-900g-tu-1-tuoi.png" alt="GrowPLUS+">
+        <img src="../img/<?php echo $_GET['image']?>" alt="ảnh">
       </div>
 
       <div class="product-info">
-        <h2 class="product-title">Sữa Bột Nutifood GrowPLUS+</h2>
+        <h2 class="product-title"><?php echo $_GET['ten']?></h2>
 
         <div class="nutrition">
-          <p>Nhà sản xuất : ViNaMILK</p>
+          <p>Nhà sản xuất : <?php echo $_GET['nhanhang']?></p>
           <div class="section-title">Thành phần dinh dưỡng:</div>
           
           <p>Sữa non, DHA, FOS, Canxi, Vitamin D3, Kẽm, Lysine...</p>
