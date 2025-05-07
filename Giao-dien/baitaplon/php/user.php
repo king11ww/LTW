@@ -157,6 +157,10 @@ function enableEditing(e) {
 	const form = document.querySelector(".profile-form");
 	const inputs = form.querySelectorAll("input[type='text'], input[type='email']");
 	inputs.forEach(input => input.disabled = false);
+
+	const save = document.querySelector(".save");
+	save.style.display = "block";
+	e.style.display = "none";
 }
 </script>
 </body>
