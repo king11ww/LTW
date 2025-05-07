@@ -1,15 +1,11 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Kết nối cơ sở dữ liệu
     require_once('../../../ket-noi-co-so-du-lieu.php');
     
-    // Lấy dữ liệu từ form
     $ten_hang_sua = $_POST['ten_hang_sua'];
     $dia_chi = $_POST['dia_chi'];
     $dien_thoai = $_POST['dien_thoai'];
     $email = $_POST['email'];
-    
-    // Thêm dữ liệu vào bảng
     $sql = "INSERT INTO hangsua (ten_hang_sua, dia_chi, dien_thoai, email) 
             VALUES ('$ten_hang_sua', '$dia_chi', '$dien_thoai', '$email')";
     $check_sql = "SELECT * FROM hangsua WHERE ten_hang_sua = '$ten_hang_sua'";

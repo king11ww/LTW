@@ -2,7 +2,7 @@
     session_start();
     require_once('../../../ket-noi-co-so-du-lieu.php');
     if (!isset($_SESSION['ten_dang_nhap'])) {
-        header('Location: batdau.php'); // Chuyển hướng về trang bắt đầu nếu chưa đăng nhập
+        header('Location: batdau.php');
         exit();
     }
     $sql = "update dohang set xacnhan = 'Đã xác nhận' where ten_dang_nhap = '$_SESSION[ten_dang_nhap]' and xacnhan = 'Chưa xác nhận'";

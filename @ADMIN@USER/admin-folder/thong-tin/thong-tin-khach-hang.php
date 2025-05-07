@@ -10,7 +10,7 @@
         exit();
     }
 
-    // Xóa khách hàng
+
     if (isset($_GET['action']) && $_GET['action'] == 'xoa') {
         require_once('../../../ket-noi-co-so-du-lieu.php');
         $id = $_GET['id'];

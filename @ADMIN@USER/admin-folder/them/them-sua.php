@@ -1,29 +1,29 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Kết nối cơ sở dữ liệu
+
     require_once '../../../ket-noi-co-so-du-lieu.php';
 
-    // Lấy dữ liệu từ form;
+
     $ten_sua = $_POST['ten_sua'];
     $nhan_hang = $_POST['nhan-hang'];
     $don_gia = $_POST['don_gia'];
-    // $mo_ta = $_POST['mo_ta'];
+
     $hinh_anh = $_FILES['hinh_anh']['name'];
     $thanh_phan = $_POST['thanh-phan'];
     $loi_ich = $_POST['loi-ich'];
 
-    // Xử lý upload hình ảnh
-    $target_dir = "../../../Giao-dien/baitaplon/img/"; // Thư mục lưu ảnh
+
+    $target_dir = "../../../Giao-dien/baitaplon/img/";
     $target_file = $target_dir . basename($_FILES["hinh_anh"]["name"]);
 
-    // Kiểm tra và di chuyển file ảnh
+
     if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
-        // Thêm dữ liệu vào bảng
+
         $sql = "INSERT INTO sanpham (ten, nhanhang, giaban, `image`, thanhphan, loinhuan) 
                 VALUES ('$ten_sua', '$nhan_hang', '$don_gia', '$hinh_anh', '$thanh_phan', '$loi_ich')";
 
         if ($conn->query($sql) === TRUE) {
-            // Chuyển hướng về trang admin
+
             header("Location: them-thanh-cong.php?ten_sua=$ten_sua&nhan_hang=$nhan_hang&don_gia=$don_gia&hinh_anh=$hinh_anh&thanh_phan=$thanh_phan&loi_ich=$loi_ich");
             exit();
         } else {
@@ -99,8 +99,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="don-gia">Đơn Giá (VNĐ):</label>
         <input type="number" id="don-gia" name="don_gia" placeholder="Nhập đơn giá" required>
 
-        <!-- <label for="mo-ta">Mô Tả:</label>
-        <textarea id="mo-ta" name="mo_ta" rows="4" placeholder="Nhập mô tả" required></textarea> -->
 
         <label for="hinh-anh">Hình Ảnh:</label>
         <input type="file" id="hinh-anh" name="hinh_anh" accept="image/*" required>

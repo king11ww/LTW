@@ -81,7 +81,7 @@
                 <td><?php echo $row['xacnhan'] ?></td>
                 <td><a href="capnhat.php?khoa=<?php echo $row['id']; ?>">Cập nhật</a> </td>
 				<td>
-					<a href="xoa.php?khoa=<?php echo $row['id']; ?>" 
+					<a href="?action=xoa&id=<?php echo $row['id']; ?>" 
                     onclick = "confirm('Bạn có chắc chắn muốn xóa hay không')">Xóa</a> 
 				</td>
             </tr>

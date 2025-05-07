@@ -72,7 +72,7 @@ a{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Bảng thông tin khách hàng */
+
 table {
     width: 90%;
     margin: 20px auto;
@@ -117,12 +117,12 @@ td a:hover {
     text-decoration: underline;
 }
 
-/* Cải thiện bảng và liên kết xóa */
+
 td a:last-child {
     margin-left: 10px;
 }
 
-/* Thêm khoảng cách và bo góc cho bảng */
+
 .table th, .table td {
     border-radius: 8px;
 }

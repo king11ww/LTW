@@ -17,7 +17,6 @@
         $ten_dn = $_POST['ten_dang_nhap'];
         $so_luong = $_POST['so_luong'];
         $gia_sp = $_POST['gia_san_pham'];
-        // Kiểm tra số lượng hợp lệ
         $sql_update = "UPDATE dohang SET soluong = $so_luong , gia =  $so_luong * $gia_sp WHERE ten_san_pham = '$ten_sp' AND ten_dang_nhap = '$ten_dn'";
         mysqli_query($conn, $sql_update);
         header("Location: shop.php");

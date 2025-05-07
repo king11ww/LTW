@@ -1,12 +1,11 @@
 <?php
     session_start();
-    // Kiểm tra nếu người dùng chưa đăng nhập
+
     if (!isset($_SESSION['ten_dang_nhap'])) {
-        header('Location: batdau.php'); // Chuyển hướng về trang bắt đầu nếu chưa đăng nhập
+        header('Location: batdau.php'); 
         exit();
     }
 
-    // Xử lý khi người dùng nhấn nút "Xác nhận"
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         require_once('../../../ket-noi-co-so-du-lieu.php');
         $phuongThucThanhToan = ($_POST['phuong-thuc-thanh-toan'] == 'chuyen-khoan') ? 'Chuyển khoản' : 'Thanh toán khi nhận hàng';
