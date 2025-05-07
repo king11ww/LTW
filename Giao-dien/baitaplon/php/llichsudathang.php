@@ -101,7 +101,7 @@
         <div class="header1">
             <div class="shopcontent">
                 <div class="yourshop">
-                    <b>Giỏ hàng của bạn</b>
+                    <b>Lịch sử đặt hàng</b>
                 </div>
 
                 <div class="infoshop">
@@ -161,45 +161,6 @@
                             ?>
                         </div>
                     </div>
-                    <!-- Ghi chú đơn hàng -->
-                    <div class="noteoder">
-                        <b>Ghi chú cho đơn hàng</b>
-                        <div class="note">
-                            <input type="text" placeholder="Ghi chú cho đơn hàng">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer">
-            <div class="footer_content">
-                <div class="footer_menu">
-                    <div class="footer_menu_st">
-                        <h1><i class="fa-solid fa-glass-water"></i> MILK</h1>
-                        <span>Các sản phẩm từ sữa cao cấp được giao tươi đến tận nhà bạn mỗi ngày.</span>
-                    </div>
-                    <div class="footer_menu_st">
-                        <h2>Qick Links</h2>
-                        <span><a href="#">Home</a></span>
-                        <span><a href="#">Sản phẩm</a></span>
-                        <span><a href="#">Thông tin</a></span>
-                        <span><a href="#">Liên hệ</a></span>
-                    </div>
-                    <div class="footer_menu_st">
-                        <h2>Các nhãn hàng</h2>
-                        <span><a href="#">Vinamilk</a></span>
-                        <span><a href="#">TH true MILK</a></span>
-                        <span><a href="#">Nutifood</a></span>
-                        <span><a href="#">Dutch Lady</a></span>
-                    </div>
-                    <div class="footer_menu_st">
-                        <h2>Hãy là một thành viên của chúng tôi!</h2>
-                        <span><a href="#">tham gia Tuyển dụng ngay</a></span>
-                    </div>
-                </div>
-                <div class="footer_end">
-                    <hr>
-                    <h6>© 2025 Milk. All rights reserved.</h6>
                 </div>
             </div>
         </div>
