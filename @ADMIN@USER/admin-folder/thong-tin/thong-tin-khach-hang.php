@@ -14,7 +14,7 @@
         $sql_delete = "DELETE FROM khachhang WHERE id = $id";
         mysqli_query($conn, $sql_delete);
         header("Location: thong-tin-khach-hang.php");
-        mysqli_close();
+        mysqli_close($conn);
     }
 ?>
 <!DOCTYPE html>
