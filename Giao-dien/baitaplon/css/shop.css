@@ -37,8 +37,6 @@ body {
     font-size: 25px;
     color: white;
 }
-
-/* Bố cục chính */
 .product-summary {
     display: flex;
     gap: 20px;
@@ -46,7 +44,6 @@ body {
     margin-bottom: 30px;
 }
 
-/* inshop gấp đôi howmany */
 .inshop {
     flex: 3;
     display: flex;
@@ -93,8 +90,6 @@ body {
     font-size: 18px;
     padding-top: 60px;
 }
-
-/* howmany chiếm 1 phần */
 .howmany {
     flex: 1;
     background-color: #BDC1C8;

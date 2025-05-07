@@ -44,9 +44,9 @@
 </head>
 <body>
     <?php
-		require_once("../../../ket-noi-co-so-du-lieu.php"); // ..(1) out ra php ..(2) out ra baitaplon ..(3) out ra Giao-dien
+		require_once("../../../ket-noi-co-so-du-lieu.php"); 
 		$sql = "select * from sanpham where nhanhang = 'Vinamilk'";
-		$kq = mysqli_query($conn, $sql); //Go
+		$kq = mysqli_query($conn, $sql); 
 	?>
     <div class="container">
         <div class="header">

@@ -2,15 +2,12 @@
     require_once('../../../ket-noi-co-so-du-lieu.php');
     $sql = "SELECT * FROM khachhang";
     $result = mysqli_query($conn, $sql);
-
     if (isset($_GET['action']) && $_GET['action'] == 'logout') {
         session_start();
         session_destroy();
         header("Location: ../../../Giao-dien/baitaplon/php/batdau.php");
         exit();
     }
-
-    // Xóa khách hàng
     if (isset($_GET['action']) && $_GET['action'] == 'xoa') {
         require_once('../../../ket-noi-co-so-du-lieu.php');
         $id = $_GET['id'];
@@ -20,7 +17,6 @@
         mysqli_close();
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
