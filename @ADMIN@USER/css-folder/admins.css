@@ -70,11 +70,8 @@ a{
     margin-top: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 262eb53e1030c2f882ea33d44245bb54abcaafcd
 table {
     width: 90%;
     margin: 20px auto;
@@ -113,7 +110,6 @@ td a:hover {
     color: #0056b3;
     text-decoration: underline;
 }
-<<<<<<< HEAD
 
 
 td a:last-child {
@@ -121,11 +117,6 @@ td a:last-child {
 }
 
 
-=======
-td a:last-child {
-    margin-left: 10px;
-}
->>>>>>> 262eb53e1030c2f882ea33d44245bb54abcaafcd
 .table th, .table td {
     border-radius: 8px;
 }
