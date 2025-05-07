@@ -52,8 +52,6 @@
                 $get_user = "SELECT * FROM khachhang WHERE ten_dang_nhap = '$tenDangNhap'";
                 if ($conn->query($get_user)->num_rows > 0) {
                     echo "<script>alert('Tên đăng nhập đã tồn tại!');</script>";
-                    $conn->close();
-                    exit();
                 }     
                 $tenDangNhap = $_POST["ten-dang-nhap"];
                 $hoVaTen = $_POST["ho-va-ten"];
@@ -72,18 +70,14 @@
                     $get_user = "SELECT * FROM khachhang WHERE ten_dang_nhap = '$tenDangNhap'";
                     if ($conn->query($get_user)->num_rows > 0) {
                         echo "<script>alert('Tên đăng nhập đã tồn tại!');</script>";
-                        $conn->close();
-                        exit();
                     }     
 
                     if ($conn->query($sql) === TRUE) {
                         echo "<script>alert('Đăng kí thành công!');</script>";
                         header("Location: dang-nhap.php");
-                        exit();
                     } else {
                         echo "<script>alert('Lỗi: " . $sql . "<br>" . $conn->error . "');</script>";
                     }
-                    $conn->close();
                 }
                 else
                 {
@@ -92,12 +86,9 @@
                 if ($conn->query($sql) === TRUE) {
                     echo "<script>alert('Đăng kí thành công! Vui lòng đăng nhập lại heheh');</script>";
                     header("Location: dang-nhap.php");
-                    exit();
                 } else {
                     echo "<script>alert('Lỗi: " . $sql . "<br>" . $conn->error . "');</script>"; 
                 }
-                $conn->close();
-                
             }
 
         ?>

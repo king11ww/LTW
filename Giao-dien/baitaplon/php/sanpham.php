@@ -1,3 +1,4 @@
+
 <?php
     session_start();
     if(isset($_GET['action']) && $_GET['action'] == 'logout')
@@ -116,7 +117,6 @@
                     </p>
                 </div>
                 <div class="products_maincontent">
-                    <input type="search" placeholder="Tìm kiếm sản phẩm...">
                     <div class="products_product">
                         <?php
                             while($row = mysqli_fetch_assoc($kq)){
@@ -128,15 +128,9 @@
                                     <span><?php echo $row["ten"] ?></span>
                                     <span><?php echo $row["giaban"] ?>vnđ</span>
                                     <div class="mota">
-                                    <a href="thongtin.php">
-                                        <i>Mô tả
-                                         </a>
-                                            <div class="cuasomota">
-                                                <p>
-                                                    <span>ten nha san xuat: <?php echo $row["nhanhang"] ?></span>
-                                                </p>
-                                            </div>
-                                        </i>
+                                    <a href="thongtin.php?id=<?php echo $row['id']?>"  target="_blank">
+                                        <i>Mô tả</i>
+                                    </a>
                                     </div>
                                 </p>
                             </div>
