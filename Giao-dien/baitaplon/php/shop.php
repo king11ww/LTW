@@ -8,16 +8,34 @@
     }
     require_once("../../../ket-noi-co-so-du-lieu.php");
 
-    if(isset($_GET['xac-nhan'])) {
-        $ten_sp = $_GET['ten_san_pham'];
-        $ten_dn = $_GET['ten_dang_nhap'];
-        $so_luong = $_GET['so_luong'];
-        $gia_sp = $_GET['gia_san_pham'];
+    if(isset($_POST['thay-doi-so-luong'])) {
+        $ten_sp = $_POST['ten_san_pham'];
+        $ten_dn = $_POST['ten_dang_nhap'];
+        $so_luong = $_POST['so_luong'];
+        $gia_sp = $_POST['gia_san_pham'];
         // Kiểm tra số lượng hợp lệ
         $sql_update = "UPDATE dohang SET soluong = $so_luong , gia =  $so_luong * $gia_sp WHERE ten_san_pham = '$ten_sp' AND ten_dang_nhap = '$ten_dn'";
         mysqli_query($conn, $sql_update);
         header("Location: shop.php");
         exit();
+    }
+
+    if(isset($_POST['huy-don-hang'])) {
+        $ten_sp = $_POST['ten_san_pham'];
+        $ten_dn = $_POST['ten_dang_nhap'];
+        $so_luong = $_POST['so_luong'];
+        $sql_xoa_don_hang = "DELETE FROM dohang WHERE `dohang`.`ten_dang_nhap` = '$ten_dn' and `ten_san_pham` = '$ten_sp'";
+        mysqli_query($conn, $sql_xoa_don_hang);
+        $_SESSION['xoa-don-hang'] = "Xóa thành công đơn hàng " . $ten_sp . " với số lượng " . $so_luong;
+        
+        header("Location: shop.php");
+        exit();
+    }
+    if(isset($_SESSION['xoa-don-hang']))
+    {
+        $thong_bao_xoa_don_hang_thanh_cong = $_SESSION['xoa-don-hang'];
+        echo "<script> alert('$thong_bao_xoa_don_hang_thanh_cong')</script>";
+        unset($_SESSION['xoa-don-hang']);
     }
 ?>
 <!DOCTYPE html>
@@ -104,7 +122,7 @@
                     <div class="product-summary">
                                 <?php
                                 require_once("../../../ket-noi-co-so-du-lieu.php");
-                                $sql = "select * from dohang as dh inner join sanpham as sp on sp.ten = dh.ten_san_pham where ten_dang_nhap = '$_SESSION[ten_dang_nhap]'";  
+                                $sql = "select * from dohang as dh inner join sanpham as sp on sp.ten = dh.ten_san_pham where ten_dang_nhap = '$_SESSION[ten_dang_nhap]' and xacnhan = 'chưa xác nhận'";  
                                 $result = mysqli_query($conn, $sql);
                                 $allmoney = 0;
                                 if(mysqli_num_rows($result) < 1):
@@ -127,7 +145,7 @@
                                         <p>Tên nhãn hàng: <?php echo $row['nhanhang'] ?></p>
                                     </div>
                                     <div class="money">
-                                    <form action="shop.php" method="get">
+                                    <form action="shop.php" method="post">
                                         <?php 
                                             require_once("../../../ket-noi-co-so-du-lieu.php");
                                             $ten_sp = $row['ten_san_pham'];
@@ -141,9 +159,10 @@
                                         <input type="hidden" name="gia_san_pham" value="<?php echo $gia_ban?>">
                                         <p>Giá: <?php echo $row['gia'] ?>vnđ</p>
                                         <label>Số Lượng:</label>
-                                        <input type="number" name="so_luong" class="quantity" value="<?php echo $row['soluong'] ?>" min="1">
+                                        <input type="number" name="so_luong" class="quantity" value="<?php echo $row['soluong'] ?>" min="1" max ="20">
                                         
-                                        <button type="submit" name="xac-nhan">Thay đổi số lượng</button>
+                                        <button type="submit" name="thay-doi-so-luong">Thay đổi số lượng</button>
+                                        <button type="submit" name="huy-don-hang" onclick="return confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?');">Hủy đơn hàng</button>
                                     </form>
                                     </div>
                                 </div>

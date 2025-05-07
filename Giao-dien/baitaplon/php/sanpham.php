@@ -20,7 +20,7 @@
             $sql_shop = "select * from dohang where ten_dang_nhap = '$ten_dang_nhap' and ten_san_pham = '$ten_san_pham'";
             $kq_shop = mysqli_query($conn, $sql_shop);
             if(mysqli_num_rows($kq_shop) == 0):
-                $sql_insert = "INSERT INTO dohang(ten_dang_nhap,ho_ten, soluong, ten_san_pham, gia, xacnhan) VALUES ('$ten_dang_nhap','$ho_ten', '1' ,'$ten_san_pham', '$gia_ban', '0')";
+                $sql_insert = "INSERT INTO dohang(ten_dang_nhap,ho_ten, soluong, ten_san_pham, gia) VALUES ('$ten_dang_nhap','$ho_ten', '1' ,'$ten_san_pham', '$gia_ban')";
                 $kq_insert = mysqli_query($conn, $sql_insert);
             else:
                 $sql_update = "update dohang set soluong = soluong + 1 where ten_dang_nhap = '$ten_dang_nhap' and ten_san_pham = '$ten_san_pham'";
@@ -128,7 +128,7 @@
                                     <span><?php echo $row["ten"] ?></span>
                                     <span><?php echo $row["giaban"] ?>vnđ</span>
                                     <div class="mota">
-                                    <a href="thongtin.php"target="_blank">
+                                    <a href="thongtin.php">
                                         <i>Mô tả
                                          </a>
                                             <div class="cuasomota">

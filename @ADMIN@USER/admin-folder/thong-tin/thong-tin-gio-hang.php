@@ -30,7 +30,7 @@
             <a href="">
             <i class="fa-solid fa-glass-water"></i>
             <span>Milk</span>
-            <div class="space"><h6>Admin space</h6></div>  
+            <div class="space"><h6>Admin workspace</h6></div>  
             </a>
         </div>
         <div class="menu">
@@ -67,7 +67,7 @@
             </tr>
             <?php
             require_once('../../../ket-noi-co-so-du-lieu.php');
-            $sql = "select * from dohang where xacnhan = 1";
+            $sql = "select * from dohang";
             $result = mysqli_query($conn, $sql);
             while ($row = mysqli_fetch_array($result)) {
             ?>

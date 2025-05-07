@@ -1,6 +1,5 @@
 <?php
     session_start();
-
     // Kiểm tra nếu người dùng chưa đăng nhập
     if (!isset($_SESSION['ten_dang_nhap'])) {
         header('Location: batdau.php'); // Chuyển hướng về trang bắt đầu nếu chưa đăng nhập
@@ -9,13 +8,19 @@
 
     // Xử lý khi người dùng nhấn nút "Xác nhận"
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $phuongThucThanhToan = $_POST['phuong-thuc-thanh-toan'];
-
-        // Lưu thông tin thanh toán vào session
-        $_SESSION['phuong_thuc_thanh_toan'] = $phuongThucThanhToan;
-
-        // Chuyển hướng đến trang hoàn tất thanh toán
-        header('Location: hoantat-thanh-toan.php');
+        require_once('../../../ket-noi-co-so-du-lieu.php');
+        $phuongThucThanhToan = ($_POST['phuong-thuc-thanh-toan'] == 'chuyen-khoan') ? 'Chuyển khoản' : 'Thanh toán khi nhận hàng';
+        $ten_dang_nhap = $_SESSION['ten_dang_nhap'];
+        echo $phuongThucThanhToan;
+        if($phuongThucThanhToan == 'Chuyển khoản') {
+            header('Location: chuyen-khoan.php?totalmoney='.$_GET['totalmoney']);
+            exit();
+        } else {
+            $sql = "update dohang set xacnhan = 'đã xác nhận' where ten_dang_nhap = '$_SESSION[ten_dang_nhap]' and xacnhan = 'Chưa xác nhận'";
+            mysqli_query($conn, $sql);
+        }
+        mysqli_close($conn);
+        header('Location: batdau.php');
         exit();
     }
 ?>
