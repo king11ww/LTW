@@ -20,7 +20,7 @@
         mysqli_query($conn, $sql_xoa_don_hang);
         $_SESSION['xoa-don-hang'] = "Xóa thành công đơn hàng " . $ten_sp . " với số lượng " . $so_luong;
         
-        header("Location: shop.php");
+        header("Location: llichsudathang.php");
         exit();
     }
     if(isset($_SESSION['xoa-don-hang']))
@@ -35,7 +35,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giỏ hàng</title>
+    <title>Lịch sử đặt hàng</title>
     <link rel="stylesheet" href="../css/shop.css">
     <link rel="stylesheet" href="../css/header_footer.css">
     <script src="https://kit.fontawesome.com/bb6c8d9b87.js" crossorigin="anonymous"></script>
@@ -105,39 +105,72 @@
         <div class="header1">
             <div class="shopcontent">
                 <div class="yourshop">
-                    <b>Lịch sử đặt hàng</b>
+                    <b><i class="fa-solid fa-clock-rotate-left cart-icon"></i>Lịch sử đặt hàng</b>
                 </div>
 
                 <div class="infoshop">
-                    <div class="b"><b>Sản phẩm trong giỏ hàng</b></div>
+                    <div class="b"><b>Lịch sử đơn hàng</b></div>
 
-                    <div class="product-summary">
-                                <?php
-                                require_once("../../../ket-noi-co-so-du-lieu.php");
-                                $sql = "select * from dohang as dh inner join sanpham as sp on sp.ten = dh.ten_san_pham where ten_dang_nhap = '$_SESSION[ten_dang_nhap]' and xacnhan = 'đã xác nhận'";  
-                                $result = mysqli_query($conn, $sql);
-                                $allmoney = 0;
-                                if(mysqli_num_rows($result) < 1):
-                                    echo "<h1 style='text-align: center;color: white;width: 100%;'>Không có đơn hàng<h1>";
-                                else:    
-                            ?>
-                        <div class="inshop">
+                    <?php
+                    require_once("../../../ket-noi-co-so-du-lieu.php");
+                    $sql = "select * from dohang as dh inner join sanpham as sp on sp.ten = dh.ten_san_pham where ten_dang_nhap = '$_SESSION[ten_dang_nhap]' and xacnhan = 'đã xác nhận'";  
+                    $result = mysqli_query($conn, $sql);
+                    $allmoney = 0;
+                    if(mysqli_num_rows($result) < 1):
+                        echo '<div class="empty-cart">'
+                            .'<i class="fa-solid fa-clipboard-list"></i>'
+                            .'<h3>Chưa có đơn hàng đã xác nhận</h3>'
+                            .'<p>Khi bạn đặt hàng thành công, đơn hàng sẽ xuất hiện tại đây</p>'
+                            .'<a href="batdau.php">Tiếp tục mua sắm</a>'
+                        .'</div>';
+                    else:
+                        // Tính tổng tiền
+                        $temp_result = mysqli_query($conn, $sql);
+                        while($row = mysqli_fetch_assoc($temp_result)){
+                            $allmoney += $row['gia'];
+                        }
+                    ?>
+
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th>Sản phẩm</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá</th>
+                                <th>Số lượng</th>
+                                <th>Tổng</th>
+                                <th>Trạng thái</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             <?php
-                                while($row = mysqli_fetch_assoc($result)){
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_assoc($result)):
+                                $don_gia = ($row['soluong'] > 0) ? ($row['gia'] / $row['soluong']) : $row['gia'];
                             ?>
-                            
-                            <div class="info">
-                                <b class="product-info">Thông tin sản phẩm</b>
-                                <div class="setting-photo">
-                                    <div class="image-container">
-                                        <img src="../img/<?php echo $row['image']?>" alt="Sản phẩm">
-                                    </div>
-                                    <div class="infophoto">
-                                        <b><?php echo $row['ten_san_pham'] ?></b>
-                                        <p>Tên nhãn hàng: <?php echo $row['nhanhang'] ?></p>
-                                    </div>
-                                    <div class="money">
-                                    <form action="shop.php" method="post">
+                            <tr>
+                                <td class="product-image" data-label="Sản phẩm">
+                                    <img src="../img/<?php echo $row['image']?>" alt="<?php echo $row['ten_san_pham'] ?>">
+                                </td>
+                                <td class="product-name" data-label="Tên sản phẩm">
+                                    <h4><?php echo $row['ten_san_pham'] ?></h4>
+                                    <p>Nhãn hàng: <?php echo $row['nhanhang'] ?></p>
+                                </td>
+                                <td class="product-price" data-label="Giá">
+                                    <?php echo number_format($don_gia) ?> ₫
+                                </td>
+                                <td class="product-quantity" data-label="Số lượng">
+                                    <?php echo $row['soluong'] ?>
+                                </td>
+                                <td class="product-total" data-label="Tổng">
+                                    <?php echo number_format($row['gia']) ?> ₫
+                                </td>
+                                <td class="product-price" data-label="Trạng thái">
+                                    <?php echo ucfirst($row['xacnhan']); ?>
+                                </td>
+                                <td class="product-actions" data-label="Hành động">
+                                    <form action="llichsudathang.php" method="post" onsubmit="return confirm('Bạn có chắc chắn muốn hủy đơn đặt hàng này không?');">
                                         <?php 
                                             require_once("../../../ket-noi-co-so-du-lieu.php");
                                             $ten_sp = $row['ten_san_pham'];
@@ -149,22 +182,31 @@
                                         <input type="hidden" name="ten_san_pham" value="<?php echo $row['ten_san_pham'] ?>">
                                         <input type="hidden" name="ten_dang_nhap" value="<?php echo $_SESSION['ten_dang_nhap'] ?>">
                                         <input type="hidden" name="gia_san_pham" value="<?php echo $gia_ban?>">
-                                        <p>Giá: <?php echo $row['gia'] ?>vnđ</p>
-                                        <label>Số Lượng:</label>
-                                        <input type="number" name="so_luong" class="quantity" value="<?php echo $row['soluong'] ?>" min="1" max ="20" disabled>
-                                        
-                                        <button type="submit" name="huy-don-hang" onclick="return confirm('Bạn có chắc chắn muốn hủy đơn đặt hàng này không?');">Hủy đơn đặt hàng</button>
+                                        <input type="hidden" name="so_luong" value="<?php echo $row['soluong'] ?>">
+                                        <button type="submit" name="huy-don-hang" class="remove-btn"><i class="fa-solid fa-trash"></i> Hủy</button>
                                     </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php 
-                                $allmoney += $row['gia'];
-                                }    
-                                endif;
-                            ?>
+                                </td>
+                            </tr>
+                            <?php endwhile; ?>
+                        </tbody>
+                    </table>
+
+                    <div class="order-summary">
+                        <div class="summary-header">
+                            <i class="fa-solid fa-receipt"></i> Tổng chi phí các đơn đã xác nhận
+                        </div>
+                        <div class="summary-row">
+                            <span class="summary-label">Tổng tiền hàng:</span>
+                            <span class="summary-total"><?php echo number_format($allmoney) ?> ₫</span>
+                        </div>
+                        <div class="summary-info">
+                            <ul>
+                                <li><i class="fa-solid fa-circle-info"></i> Đây là tổng tiền của các đơn đã xác nhận</li>
+                                <li><i class="fa-solid fa-rotate"></i> Bạn có thể hủy đơn nếu cần (nếu cửa hàng cho phép)</li>
+                            </ul>
                         </div>
                     </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

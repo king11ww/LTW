@@ -35,8 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save'])) {
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>User Profile Form</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>User Dashboard</title>
 	<link rel="stylesheet" href="../css/user.css">
+	<link rel="stylesheet" href="../css/header_footer.css">
 	<script src="https://kit.fontawesome.com/bb6c8d9b87.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -82,40 +84,75 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save'])) {
 		<?php endif; ?>
 	</div>
 
-	<div class="profile-card">
-		<div class="profile-header">
-			<img src="https://e7.pngegg.com/pngimages/358/473/png-clipart-computer-icons-user-profile-person-child-heroes.png" alt="Avatar" class="avatar">
-			<div class="user-info">
-				<h2><?php echo htmlspecialchars($_SESSION['ten_dang_nhap']); ?></h2>
-				<p><?php echo htmlspecialchars($_SESSION['email']); ?></p>
+	<!-- Dashboard Header -->
+	<div class="dashboard-header">
+		<div class="dashboard-header-content">
+			<div class="user-profile-section">
+				<div class="avatar-container">
+					<img src="https://e7.pngegg.com/pngimages/358/473/png-clipart-computer-icons-user-profile-person-child-heroes.png" alt="Avatar" class="dashboard-avatar">
+				</div>
+				<div class="user-details">
+					<h1 class="user-name"><?php echo htmlspecialchars($_SESSION['ten_dang_nhap']); ?></h1>
+					<p class="user-email"><?php echo htmlspecialchars($_SESSION['email']); ?></p>
+				</div>
 			</div>
-            <button>
-			<a href="changepass.php" class="change-password-btn buttons">Đổi mật khẩu</a>
-            </button>
-			<button class="settings-btn">
-			<a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="logout buttons">Đăng xuất</a>
-			</button>
+			<div class="header-actions">
+				<a href="changepass.php" class="action-btn primary">
+					<i class="fa-solid fa-key"></i>
+					Đổi mật khẩu
+				</a>
+				<a href="?action=logout" onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?');" class="action-btn secondary">
+					<i class="fa-solid fa-sign-out-alt"></i>
+					Đăng xuất
+				</a>
+			</div>
 		</div>
+	</div>
 
-		<form class="profile-form" method="post">
-			<label>Full Name</label>
-			<input type="text" name="ten" value="<?php echo htmlspecialchars($_SESSION['ho_ten']); ?>" disabled>
-
-			<label>Email</label>
-			<input type="email" name="email" value="<?php echo htmlspecialchars($_SESSION['email']); ?>" disabled>
-			<small>Email cannot be changed</small>
-
-			<label>Phone</label>
-			<input type="text" value="<?php echo htmlspecialchars($_SESSION['so_dien_thoai']); ?>" disabled>
-
-			<label>Address</label>
-			<input type="text" name="dia_chi" value="<?php echo htmlspecialchars($_SESSION['dia_chi']); ?>" disabled>
-
-			<div class="button-group">
-				<button class="buttons" type="button" onclick="enableEditing(this)">Change</button>
-				<button style="display: none;" type="submit" name="save" class="save">Save Changes</button>
+	<!-- Dashboard Content -->
+	<div class="dashboard-content">
+		<div class="dashboard-grid">
+			<!-- Personal Information Card -->
+			<div class="dashboard-card personal-info-card">
+				<div class="card-header">
+					<div class="card-title">
+						<i class="fa-solid fa-user"></i>
+						<h3>Thông tin cá nhân</h3>
+					</div>
+					<button class="edit-btn" onclick="enableEditing()">
+						<i class="fa-solid fa-edit"></i>
+					</button>
+				</div>
+				<div class="card-content">
+					<form class="profile-form" method="post">
+						<div class="form-group">
+							<label><i class="fa-solid fa-user"></i> Họ và tên</label>
+							<input type="text" name="ten" value="<?php echo htmlspecialchars($_SESSION['ho_ten']); ?>" disabled>
+						</div>
+						<div class="form-group">
+							<label><i class="fa-solid fa-envelope"></i> Email</label>
+							<input type="email" name="email" value="<?php echo htmlspecialchars($_SESSION['email']); ?>" disabled>
+							<small>Email không thể thay đổi</small>
+						</div>
+						<div class="form-group">
+							<label><i class="fa-solid fa-phone"></i> Số điện thoại</label>
+							<input type="text" value="<?php echo htmlspecialchars($_SESSION['so_dien_thoai']); ?>" disabled>
+						</div>
+						<div class="form-group">
+							<label><i class="fa-solid fa-map-marker-alt"></i> Địa chỉ</label>
+							<input type="text" name="dia_chi" value="<?php echo htmlspecialchars($_SESSION['dia_chi']); ?>" disabled>
+						</div>
+						<div class="form-actions">
+							<button type="button" class="btn-secondary" onclick="cancelEditing()" style="display: none;">Hủy</button>
+							<button type="submit" name="save" class="btn-primary" style="display: none;">
+								<i class="fa-solid fa-save"></i>
+								Lưu thay đổi
+							</button>
+						</div>
+					</form>
+				</div>
 			</div>
-		</form>
+		</div>
 	</div>
 
 	<div class="footer">
@@ -153,14 +190,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save'])) {
 </div>
 
 <script>
-function enableEditing(e) {
+function enableEditing() {
 	const form = document.querySelector(".profile-form");
 	const inputs = form.querySelectorAll("input[type='text'], input[type='email']");
 	inputs.forEach(input => input.disabled = false);
 
-	const save = document.querySelector(".save");
-	save.style.display = "block";
-	e.style.display = "none";
+	const saveBtn = document.querySelector(".btn-primary");
+	const cancelBtn = document.querySelector(".btn-secondary");
+	const editBtn = document.querySelector(".edit-btn");
+
+	saveBtn.style.display = "inline-flex";
+	cancelBtn.style.display = "inline-flex";
+	editBtn.style.display = "none";
+}
+
+function cancelEditing() {
+	const form = document.querySelector(".profile-form");
+	const inputs = form.querySelectorAll("input[type='text'], input[type='email']");
+	inputs.forEach(input => input.disabled = true);
+
+	const saveBtn = document.querySelector(".btn-primary");
+	const cancelBtn = document.querySelector(".btn-secondary");
+	const editBtn = document.querySelector(".edit-btn");
+
+	saveBtn.style.display = "none";
+	cancelBtn.style.display = "none";
+	editBtn.style.display = "inline-flex";
 }
 </script>
 </body>
