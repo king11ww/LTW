@@ -1,70 +1,234 @@
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Courier New', Courier, monospace;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .container {
-    max-width: 500px;
-    margin: 80px auto;
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 90%;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 h2 {
     text-align: center;
-    color: #333;
+    color: #1e293b;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 2px;
 }
 
 h3 {
-    margin-bottom: 15px;
-    color: #555;
+    margin-bottom: 20px;
+    color: #1e293b;
+    font-size: 20px;
+    font-weight: 600;
+    border-left: 4px solid #667eea;
+    padding-left: 15px;
 }
 
 form {
     display: flex;
     flex-direction: column;
+    gap: 20px;
+}
+
+.payment-option {
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.payment-option:hover {
+    border-color: #667eea;
+    background: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.1);
+}
+
+.payment-option.selected {
+    border-color: #667eea;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
 }
 
 label {
-    display: block;
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
     font-size: 16px;
+    font-weight: 500;
+    color: #1e293b;
     cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.payment-option:hover label {
+    color: #667eea;
 }
 
 input[type="radio"] {
-    margin-right: 10px;
+    margin-right: 15px;
+    width: 18px;
+    height: 18px;
+    accent-color: #667eea;
+    cursor: pointer;
 }
 
 button {
-    padding: 10px;
-    background-color: #007bff;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #fff;
     font-size: 16px;
+    font-weight: 600;
     border: none;
-    border-radius: 5px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
 button:hover {
-    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+button:active {
+    transform: scale(0.98);
 }
 
 a {
     display: inline-block;
-    margin-top: 20px;
-    color: #007bff;
+    margin-top: 25px;
+    color: #667eea;
     text-decoration: none;
     text-align: center;
     width: 100%;
+    font-weight: 500;
+    padding: 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: rgba(102, 126, 234, 0.1);
 }
 
 a:hover {
-    text-decoration: underline;
+    background: rgba(102, 126, 234, 0.2);
+    color: #5a67d8;
+    transform: translateY(-1px);
+}
+
+/* Custom radio button styling */
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #cbd5e1;
+    border-radius: 50%;
+    outline: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+input[type="radio"]:checked {
+    border-color: #667eea;
+    background: #667eea;
+}
+
+input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+    
+    h2 {
+        font-size: 24px;
+    }
+    
+    h3 {
+        font-size: 18px;
+    }
+    
+    .payment-option {
+        padding: 15px;
+    }
+    
+    button {
+        padding: 12px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 15px;
+    }
+    
+    h2 {
+        font-size: 22px;
+    }
+    
+    h3 {
+        font-size: 16px;
+    }
+    
+    label {
+        font-size: 14px;
+    }
+    
+    button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
 }

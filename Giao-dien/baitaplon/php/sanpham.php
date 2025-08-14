@@ -129,7 +129,7 @@
                                     <span><?php echo $row["ten"] ?></span>
                                     <span><?php echo $row["giaban"] ?>vnđ</span>
                                     <div class="mota">
-                                    <a href="thongtin.php?id=<?php echo $row['id']?>"  target="_blank">
+                                    <a href="thongtin.php?id=<?php echo $row['id']?>" >
                                         <i>Mô tả</i>
                                     </a>
                                     </div>

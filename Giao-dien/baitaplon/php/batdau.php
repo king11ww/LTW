@@ -43,6 +43,9 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading"></div>
+    
     <?php
 		require_once("../../../ket-noi-co-so-du-lieu.php"); 
 		$sql = "select * from sanpham where nhanhang = 'Vinamilk'";
@@ -244,8 +247,8 @@
                         <h2>Qick Links</h2>
                         <span><a href="batdau.php">Home</a></span>
                         <span><a href="sanpham.php">Sản phẩm</a></span>
-                        <span><a href="#">Thông tin</a></span>
-                        <span><a href="#">Liên hệ</a></span>
+                        <span><a href="#" class="footer-thongtin">Thông tin</a></span>
+                        <span><a href="#" class="footer-lienhe">Liên hệ</a></span>
                     </div>
                     <div class="footer_menu_st">
                         <h2>Các nhãn hàng</h2>
@@ -266,5 +269,146 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        // Loading Animation
+        window.addEventListener('load', function() {
+            const loading = document.querySelector('.loading');
+            if (loading) {
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                }, 2000);
+            }
+        });
+
+        // Scroll Reveal Animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        // Smooth scrolling for navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const thongTinLink = document.querySelector('.menu .chose:nth-child(3) a');
+            const lienHeLink = document.querySelector('.menu .chose:nth-child(4) a');
+            const footerThongTinLink = document.querySelector('.footer-thongtin');
+            const aboutSection = document.querySelector('.about');
+            const contractSection = document.querySelector('.contract');
+            
+            // Add reveal class to elements
+            const productsSection = document.querySelector('.products');
+            const aboutSectionEl = document.querySelector('.about');
+            const contractSectionEl = document.querySelector('.contract');
+            
+            if (productsSection) productsSection.classList.add('reveal');
+            if (aboutSectionEl) aboutSectionEl.classList.add('reveal');
+            if (contractSectionEl) contractSectionEl.classList.add('reveal');
+            
+            // Xử lý nút "Thông tin" trong menu chính
+            if (thongTinLink && aboutSection) {
+                thongTinLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    aboutSection.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+            }
+            
+            // Xử lý nút "Liên hệ" trong menu chính
+            if (lienHeLink && contractSection) {
+                lienHeLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    contractSection.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+            }
+            
+            // Xử lý nút "Thông tin" trong footer
+            if (footerThongTinLink && aboutSection) {
+                footerThongTinLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    aboutSection.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+            }
+            
+            // Xử lý nút "Liên hệ" trong footer
+            const footerLienHeLink = document.querySelector('.footer-lienhe');
+            if (footerLienHeLink && contractSection) {
+                footerLienHeLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    contractSection.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+            }
+
+            // Add glow effect to buttons
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.classList.add('glow');
+            });
+
+            // Initialize reveal on scroll
+            revealOnScroll();
+        });
+
+        // Listen for scroll events
+        window.addEventListener('scroll', revealOnScroll);
+
+        // Add particle effect
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = '2px';
+            particle.style.height = '2px';
+            particle.style.background = 'rgba(102, 126, 234, 0.5)';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '1';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = window.innerHeight + 'px';
+            particle.style.animation = 'particleFloat 6s linear infinite';
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 6000);
+        }
+
+        // Create particles periodically
+        setInterval(createParticle, 3000);
+
+        // Add CSS for particle animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes particleFloat {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
